@@ -2,25 +2,23 @@
 
 ## Objective
 
-The objective of this task was to verify the DBRepo database structure and confirm that the dataset schema and relationships were correctly prepared for FAIR-compliant storage and reuse.
+The objective of this task was to verify the DBRepo database structure and confirm that the football player valuation datasets were correctly prepared for FAIR-compliant storage and reuse.
 
 ---
 
 ## Verified Files
 
-The following DBRepo-related files were verified in the repository:
-
 | File | Description |
 |---|---|
 | schema.sql | SQL schema containing database tables and relationships |
-| er_diagram.png | Entity Relationship Diagram of the database |
+| er_diagram.png | Entity Relationship Diagram |
 | dbrepo_metadata.md | Metadata and provenance documentation |
 
 ---
 
 ## Verified Database Tables
 
-The database schema contains the following normalized tables:
+The schema contains the following normalized tables:
 
 - source_dataset
 - player
@@ -38,10 +36,10 @@ The database schema contains the following normalized tables:
 The ER diagram confirms:
 - primary keys
 - foreign key relationships
-- normalized structure
+- normalized schema design
 - one-to-many relationships
 
-The schema supports structured and reproducible FAIR data workflows.
+The schema supports reproducible FAIR data workflows and relational organisation of football player valuation data.
 
 ---
 
