@@ -40,7 +40,7 @@ Legend: ✅ done · 🟡 WIP / waiting · ❌ open
 | ✅ | T3.7 README | Full README with DOI badge, instructions, licences, ORCIDs |
 | ✅ | T3.11 Standards overlap | Table for RO-Crate/CodeMeta/FAIR4ML/Croissant/Model Card |
 | ✅ | T4.1 Final DMP in DMP Tool | Complete DAMAP/FWF template |
-| ❌ | T5.4 OSTrails tests C | Implement C's 3 tests |
+| ✅ | T5.4 OSTrails tests C | Implement C's 3 tests |
 | ❌ | WP6/WP7 | Review + final report parts |
 
 ## D – Ekene Edeh
