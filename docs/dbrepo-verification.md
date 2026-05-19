@@ -54,6 +54,22 @@ The DBRepo structure supports:
 
 ---
 
+## Source Datasets
+
+### Dataset 1
+Forward football player valuation
+
+DOI:
+10.17632/cgc33scxg7.1
+
+### Dataset 2
+Transfer Value Determinants
+
+DOI:
+10.17632/3btg6ptc7b.2
+
+---
+
 ## Status
 
 PASS
