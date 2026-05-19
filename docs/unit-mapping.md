@@ -1,42 +1,34 @@
-# Unit Mapping
+# Unit Mapping Documentation
 
-## Dataset
-
-Austrian Traffic Accident Dataset
-
----
-
-## Column Unit Mapping
+## Football Player Market Value Dataset
 
 | Column Name | Data Type | Unit / Format | Description |
 |---|---|---|---|
-| accident_date | date | YYYY-MM-DD | Date of accident |
-| accident_time | time | HH:MM | Time of accident |
-| temperature | numeric | °C | Weather temperature |
-| rainfall | numeric | mm | Rainfall amount |
-| vehicle_count | integer | count | Number of vehicles involved |
-| road_type | categorical | text | Type of road |
-| accident_severity | categorical | label | Severity classification |
-| speed_limit | numeric | km/h | Road speed limit |
+| player_age | integer | years | Age of player |
+| market_value_eur | numeric | EUR (€) | Estimated market value |
+| matches_played | integer | count | Number of matches played |
+| goals | integer | count | Goals scored |
+| assists | integer | count | Assists provided |
+| minutes_played | integer | minutes | Total playing minutes |
+| instagram_followers_mln | numeric | millions | Instagram followers |
+| player_position | categorical | text | Playing position |
+| club_name | categorical | text | Current football club |
+| nationality | categorical | text | Player nationality |
+| season_year | integer | year | Football season year |
 
 ---
 
-## Metadata Notes
+## Purpose
 
-The dataset uses structured CSV formatting and standardized units to improve interoperability and reproducibility.
-
-Date and time fields follow ISO-compatible formatting conventions where possible.
-
-Numeric measurements use commonly accepted SI-related units.
+This document standardises the units, formats, and meanings of variables used in the football player valuation experiment to improve interoperability and reproducibility.
 
 ---
 
-## FAIR Compliance Notes
+## FAIR Compliance
 
-This unit mapping document improves:
+The mapping improves:
+- data consistency
+- metadata quality
 - interoperability
 - machine readability
 - reproducibility
-- metadata quality
-
-for FAIR-compliant data science workflows.
