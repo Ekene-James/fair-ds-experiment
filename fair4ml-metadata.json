@@ -9,7 +9,7 @@
   "training_dataset": {
     "name": "Austrian Traffic Accident Dataset",
     "source": "https://www.data.gv.at",
-    "dataset_doi": "TO_BE_ADDED"
+    "dataset_doi": "https://doi.org/10.70124/c35xx-9pb93"
   },
 
   "hyperparameters": {
