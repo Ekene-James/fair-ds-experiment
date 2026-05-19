@@ -232,12 +232,12 @@ Generated outputs, trained models, and evaluation artefacts are shared under the
 
 ## 👥 Contributors
 
-| Role | Name | Student ID |
-|---|---|---|
-| A | Konrad Szegedy | 12024699 |
-| B | Muhammad Athar Riaz | 12449141 |
-| C | Muhammad Bilal Hussain | 12442081 |
-| D | Edeh Ekene | 12451120 |
+| Role | Name | Student ID | ORCID |
+|---|---|---|---|
+| A | Konrad Szegedy | 12024699 | https://orcid.org/0009-0009-2299-752X |
+| B | Muhammad Athar Riaz | 12449141 | Not available |
+| C | Muhammad Bilal Hussain | 12442081 | https://orcid.org/0009-0000-2512-9167 |
+| D | Edeh Ekene | 12451120 | Not available |
 
 ---
 
