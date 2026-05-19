@@ -2,7 +2,7 @@
 
 ## Objective
 
-Verify that experiment reproduction instructions are available.
+Verify that experiment reproduction instructions are available for the football player market value prediction workflow.
 
 ## Validation Points
 
