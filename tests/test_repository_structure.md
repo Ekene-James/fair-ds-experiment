@@ -2,7 +2,7 @@
 
 ## Objective
 
-Verify that the repository follows a structured FAIR organization.
+Verify that the repository follows a structured FAIR-compliant organization for the football player valuation project.
 
 ## Required Folders
 
@@ -11,6 +11,7 @@ Verify that the repository follows a structured FAIR organization.
 - outputs/
 - docs/
 - tests/
+- dbrepo/
 
 ## Expected Result
 
