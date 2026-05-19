@@ -2,7 +2,7 @@
 
 ## Objective
 
-Verify that FAIR metadata files exist in the repository.
+Verify that FAIR metadata and documentation files exist in the repository for the football player valuation experiment.
 
 ## Checked Files
 
@@ -10,10 +10,12 @@ Verify that FAIR metadata files exist in the repository.
 - fair4ml-metadata.json
 - docs/standards-overlap.md
 - docs/unit-mapping.md
+- docs/dbrepo-verification.md
+- docs/contribution-summary.md
 
 ## Expected Result
 
-All metadata and FAIR documentation files should exist and be accessible.
+All FAIR metadata and documentation files should exist and be accessible.
 
 ## Status
 
