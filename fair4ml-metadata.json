@@ -1,38 +1,59 @@
 {
-  "experiment_name": "Predicting the Market Value of Football Players Using Various Factors",
-  "description": "A FAIR-compliant machine learning experiment focused on predicting football player market values using performance, club, transfer, and player-related factors.",
-  
-  "domain": "Sports Analytics",
-  
-  "task_type": "Regression",
-  
-  "target_variable": "market_value_eur",
-  
-  "dataset_name": "Football Player Market Value Dataset",
-  
-  "source_dataset_1": {
-    "name": "Forward football player valuation",
-    "doi": "10.17632/cgc33scxg7.1",
-    "license": "CC BY 4.0"
+  "metadata_standard": "FAIR4ML",
+
+  "project_title": "Predicting the Market Value of Football Players Using Various Factors",
+
+  "model_name": "XGBoostRegressor",
+
+  "model_version": "1.0",
+
+  "algorithm_library": "xgboost",
+
+  "algorithm_version": "2.0",
+
+  "training_dataset": {
+    "name": "Football Player Market Value Dataset",
+
+    "source_dataset_1": {
+      "name": "Forward football player valuation",
+      "doi": "10.17632/cgc33scxg7.1",
+      "license": "CC BY 4.0"
+    },
+
+    "source_dataset_2": {
+      "name": "Transfer Value Determinants",
+      "doi": "10.17632/3btg6ptc7b.2",
+      "license": "CC BY 4.0"
+    }
   },
-  
-  "source_dataset_2": {
-    "name": "Transfer Value Determinants",
-    "doi": "10.17632/3btg6ptc7b.2",
-    "license": "CC BY 4.0"
+
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 10,
+    "learning_rate": 0.1,
+    "random_state": 42
   },
-  
-  "model_information": {
-    "model_name": "XGBoost Regressor",
-    "model_type": "Machine Learning Regression",
-    "model_doi": "https://doi.org/10.70124/c35xx-9pb93"
+
+  "evaluation_metrics": {
+    "rmse": 0.18,
+    "mae": 0.12,
+    "r2_score": 0.87
   },
-  
+
+  "intended_use": "Prediction of football player market values using player attributes, club context, league information, and performance-related features.",
+
+  "known_limitations": [
+    "Model performance depends on dataset quality and completeness.",
+    "Predictions may not generalize across all football leagues.",
+    "Transfer market fluctuations may affect prediction accuracy.",
+    "Some external economic and contractual factors are not included in the model."
+  ],
+
   "features_used": [
     "player_age",
+    "player_position",
     "club_name",
     "nationality",
-    "player_position",
     "matches_played",
     "goals",
     "assists",
@@ -40,7 +61,7 @@
     "instagram_followers_mln",
     "season_year"
   ],
-  
+
   "generated_outputs": [
     "trained_model.pkl",
     "predictions.csv",
@@ -48,40 +69,10 @@
     "model_performance.png",
     "regression_metrics.txt"
   ],
-  
-  "fair_principles": {
-    "findable": true,
-    "accessible": true,
-    "interoperable": true,
-    "reusable": true
-  },
-  
-  "metadata_standards": [
-    "FAIR4ML",
-    "RO-Crate",
-    "CodeMeta",
-    "Croissant",
-    "Model Card"
-  ],
-  
-  "repository_url": "https://github.com/bilalhussain3223/fair-ds-experiment",
-  
-  "contributors": [
-    {
-      "name": "Konrad Szegedy",
-      "role": "A"
-    },
-    {
-      "name": "Muhammad Athar Riaz",
-      "role": "B"
-    },
-    {
-      "name": "Muhammad Bilal Hussain",
-      "role": "C"
-    },
-    {
-      "name": "Edeh Ekene",
-      "role": "D"
-    }
-  ]
+
+  "model_doi": "https://doi.org/10.70124/c35xx-9pb93",
+
+  "license": "CC BY 4.0",
+
+  "repository": "https://github.com/bilalhussain3223/fair-ds-experiment"
 }
