@@ -13,6 +13,7 @@ This project focuses on predicting the market value of football players using ma
 The project reuses openly accessible football datasets from Mendeley Data and follows FAIR principles to ensure reproducibility, accessibility, interoperability, and reusability.
 
 The workflow includes:
+
 - data ingestion
 - preprocessing and cleaning
 - exploratory data analysis
@@ -269,6 +270,7 @@ The repository is structured to ensure reproducibility of the experiment. All pr
 Metadata standards and FAIR documentation files are included to improve discoverability and reuse of the experiment outputs.
 
 The project includes:
+
 - structured folder organisation
 - documented workflows
 - version-controlled notebooks and scripts
@@ -307,6 +309,182 @@ The repository includes additional documentation files:
 
 ---
 
+# DBRepo REST API Reimplementation
+
+## Overview
+
+The original experiment loaded datasets from local CSV/Excel files using pandas.
+
+To satisfy T2.6, the pipeline was fully reimplemented to retrieve data exclusively through the DBRepo REST API. All local file reads (`pd.read_csv`, `pd.read_excel`) were deprecated and replaced with:
+
+- DBRepo view retrieval
+- REST API access
+- local pandas reconstruction of denormalized ML-ready datasets because of current DBRepo SDK mapper limitations affecting large multi-table joins
+
+Final workflow:
+
+```text
+DBRepo Views
+    ↓
+REST API Retrieval
+    ↓
+Local pandas merges
+    ↓
+ML-ready DataFrames
+```
+
+No local CSV or Excel files are used in the final experiment pipeline.
+
+---
+
+## API Configuration
+
+### Base URL
+
+```text
+https://test.dbrepo.tuwien.ac.at
+```
+
+### Endpoints Used
+
+| Endpoint                                             | Purpose                  |
+| ---------------------------------------------------- | ------------------------ |
+| `/api/v1/database/{database_id}/view`                | Retrieve available views |
+| `/api/v1/database/{database_id}/view/{view_id}/data` | Retrieve view data       |
+
+### Authentication
+
+Authentication is handled through the DBRepo Python SDK using username/password credentials:
+
+```python
+client = RestClient(
+    base_url="https://test.dbrepo.tuwien.ac.at",
+    username=USERNAME,
+    password=PASSWORD,
+)
+```
+
+Credentials are supplied at runtime and are not stored in the repository.
+
+---
+
+## Views Used in the Final Experiment
+
+### Primary ML View
+
+#### `vw_transfer_features`
+
+Main view used in the final regression experiment.
+
+Contains:
+
+- transfer-market numerical features
+- player-performance metrics
+- target variable: `value_end_mln`
+- FK identifiers for lookup reconstruction
+
+Used in:
+
+- preprocessing
+- feature engineering
+- model training
+- evaluation
+
+Retrieved through:
+
+```python
+load_transfer_dataset(client)
+```
+
+Final dataframe:
+
+```python
+merged_transfer_df
+```
+
+---
+
+### Lookup Views Used During Reconstruction
+
+The following views were retrieved separately and merged locally through pandas:
+
+| View                    | Purpose                        |
+| ----------------------- | ------------------------------ |
+| `vw_player_lookup`      | reconstruct `player_name`      |
+| `vw_club_lookup`        | reconstruct `club_name`        |
+| `vw_position_lookup`    | reconstruct `position_name`    |
+| `vw_nationality_lookup` | reconstruct `nationality_name` |
+
+Example reconstruction:
+
+```python
+merged_transfer_df = (
+    transfer_df
+    .merge(player_df, on="player_id", how="left")
+    .merge(club_df, on="club_id", how="left")
+    .merge(position_df, on="position_id", how="left")
+    .merge(nationality_df, on="nationality_id", how="left")
+)
+```
+
+---
+
+### Additional Implemented Views
+
+The following views were implemented as part of the DBRepo architecture but were not directly used in the final regression workflow:
+
+| View                       | Purpose                            |
+| -------------------------- | ---------------------------------- |
+| `vw_forward_features`      | Dataset 1 valuation analysis       |
+| `vw_combined_player_value` | Cross-dataset exploratory analysis |
+
+Associated reconstructed dataframes:
+
+- `merged_forward_df`
+- `merged_combined_df`
+
+---
+
+### Reusable Loader Module
+
+All REST API retrieval and dataframe reconstruction logic was centralized inside:
+
+```text
+notebooks/utils/dbrepo_loader.py
+```
+
+Main functions:
+
+- `get_client()`
+- `fetch_view_df()`
+- `load_lookup_tables()`
+- `load_transfer_dataset()`
+- `load_forward_dataset()`
+- `load_combined_dataset()`
+
+---
+
+### Error Handling
+
+Robust error handling was implemented for:
+
+- connection failures
+- unexpected response codes
+- missing views
+- DBRepo internal server errors
+- empty responses
+
+### Verification
+
+The REST API implementation preserves:
+
+- identical preprocessing logic
+- identical train/test splitting
+- identical feature engineering
+- identical model configuration
+
+The reimplemented API-based workflow reproduces the same analytical pipeline and equivalent experimental behavior as the original local-file implementation while fully satisfying the DBRepo integration requirements.
+
 ## 📜 Licenses
 
 ### Input Data
@@ -325,12 +503,12 @@ Generated outputs, trained models, visualisations, and evaluation artefacts are 
 
 ## 👥 Contributors
 
-| Role | Name | Student ID | ORCID |
-|---|---|---|---|
-| A | Konrad Szegedy | 12024699 | https://orcid.org/0009-0009-2299-752X |
-| B | Muhammad Athar Riaz | 12449141 | Not available |
-| C | Muhammad Bilal Hussain | 12442081 | https://orcid.org/0009-0000-2512-9167 |
-| D | Edeh Ekene | 12451120 | Not available | https://orcid.org/0009-0007-2481-389X
+| Role | Name                   | Student ID | ORCID                                 |
+| ---- | ---------------------- | ---------- | ------------------------------------- | ------------------------------------- |
+| A    | Konrad Szegedy         | 12024699   | https://orcid.org/0009-0009-2299-752X |
+| B    | Muhammad Athar Riaz    | 12449141   | Not available                         |
+| C    | Muhammad Bilal Hussain | 12442081   | https://orcid.org/0009-0000-2512-9167 |
+| D    | Edeh Ekene             | 12451120   | Not available                         | https://orcid.org/0009-0007-2481-389X |
 
 ---
 

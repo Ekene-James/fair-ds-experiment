@@ -1,0 +1,118 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "sc": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/"
+  },
+  "@type": "sc:Dataset",
+  "name": "Forward Football Player Valuation Dataset",
+  "description": "Dataset containing valuation, popularity, and football performance statistics for professional forward players. Used for market value prediction experiments.",
+  "keywords": [
+    "football",
+    "soccer",
+    "market value",
+    "sports analytics",
+    "machine learning"
+  ],
+  "license": "Academic Use",
+  "creator": {
+    "@type": "Person",
+    "name": "Briseño & Rivera"
+  },
+  "url": "https://test.dbrepo.tuwien.ac.at/database/be8863ae-9794-4ee2-a964-3e22133b3840",
+  "distribution": {
+    "@type": "cr:FileObject",
+    "name": "Dataset soccerplayers.xlsx",
+    "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "contentUrl": "https://test.dbrepo.tuwien.ac.at/database/be8863ae-9794-4ee2-a964-3e22133b3840"
+  },
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "name": "forward_player_valuation",
+      "description": "Forward-player valuation observations and player statistics.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "name": "nombre",
+          "dataType": "sc:Text",
+          "description": "Player name."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "VALUE",
+          "dataType": "sc:Number",
+          "unitText": "million EUR",
+          "description": "Estimated player market value."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "VALUE_R",
+          "dataType": "sc:Integer",
+          "description": "Relative player market value ranking."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "AGE",
+          "dataType": "sc:Number",
+          "unitText": "years",
+          "description": "Player age."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "TEAM",
+          "dataType": "sc:Text",
+          "description": "Current football club."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "EUROPA",
+          "dataType": "sc:Boolean",
+          "description": "Whether the player competes in Europe."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "MATCHES",
+          "dataType": "sc:Integer",
+          "unitText": "matches",
+          "description": "Total matches played."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "GOALS",
+          "dataType": "sc:Integer",
+          "unitText": "goals",
+          "description": "Total goals scored."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "ASSISTS",
+          "dataType": "sc:Integer",
+          "unitText": "assists",
+          "description": "Total assists recorded."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "MPG",
+          "dataType": "sc:Number",
+          "unitText": "minutes",
+          "description": "Average minutes per goal."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "MINUTES",
+          "dataType": "sc:Number",
+          "unitText": "minutes",
+          "description": "Total minutes played."
+        },
+        {
+          "@type": "cr:Field",
+          "name": "INSTA",
+          "dataType": "sc:Number",
+          "unitText": "million followers",
+          "description": "Instagram follower count."
+        }
+      ]
+    }
+  ]
+}
