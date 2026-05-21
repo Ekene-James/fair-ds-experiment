@@ -4,33 +4,59 @@
     "sc": "https://schema.org/",
     "cr": "http://mlcommons.org/croissant/"
   },
+
   "@type": "sc:Dataset",
+
   "name": "Transfer Value Determinants Dataset",
-  "description": "Dataset containing football player transfer-market observations and performance metrics across multiple seasons. Used for transfer value prediction experiments.",
+
+  "description": "Dataset containing football player transfer-market observations and performance metrics across multiple seasons. Used for transfer value prediction experiments and sports analytics workflows.",
+
   "keywords": [
     "football",
     "soccer",
     "transfer value",
     "sports analytics",
-    "machine learning"
+    "machine learning",
+    "player transfers"
   ],
-  "license": "Academic Use",
+  "datePublished": "2025",
+
+  "license": "CC BY 4.0",
+
+  "identifier": "10.17632/3btg6ptc7b.2",
+
   "creator": {
     "@type": "Person",
-    "name": "Nisanov"
+    "name": "Ronald Nisanov"
   },
-  "url": "https://test.dbrepo.tuwien.ac.at/database/be8863ae-9794-4ee2-a964-3e22133b3840",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mendeley Data"
+  },
+
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Transfer Value Determinants",
+    "identifier": "10.17632/3btg6ptc7b.2"
+  },
+
+  "url": "https://data.mendeley.com/datasets/3btg6ptc7b/2",
+
   "distribution": {
     "@type": "cr:FileObject",
     "name": "Nisanov_final_data.xlsx",
     "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "contentUrl": "https://test.dbrepo.tuwien.ac.at/database/be8863ae-9794-4ee2-a964-3e22133b3840"
+    "contentUrl": "https://data.mendeley.com/datasets/3btg6ptc7b/2"
   },
+
   "recordSet": [
     {
       "@type": "cr:RecordSet",
+
       "name": "transfer_value_observation",
+
       "description": "Transfer-market observations collected across multiple football seasons.",
+
       "field": [
         {
           "@type": "cr:Field",
@@ -38,18 +64,35 @@
           "dataType": "sc:Text",
           "description": "Player name."
         },
+
         {
           "@type": "cr:Field",
           "name": "position",
           "dataType": "sc:Text",
           "description": "Playing position."
         },
+
         {
           "@type": "cr:Field",
           "name": "nationality",
           "dataType": "sc:Text",
           "description": "Player nationality."
         },
+
+        {
+          "@type": "cr:Field",
+          "name": "club_name",
+          "dataType": "sc:Text",
+          "description": "Football club name."
+        },
+
+        {
+          "@type": "cr:Field",
+          "name": "season",
+          "dataType": "sc:Integer",
+          "description": "Season year."
+        },
+
         {
           "@type": "cr:Field",
           "name": "age_then",
@@ -57,6 +100,7 @@
           "unitText": "years",
           "description": "Player age during the observed season."
         },
+
         {
           "@type": "cr:Field",
           "name": "age_now",
@@ -64,30 +108,28 @@
           "unitText": "years",
           "description": "Current player age."
         },
-        {
-          "@type": "cr:Field",
-          "name": "club_name",
-          "dataType": "sc:Text",
-          "description": "Football club name."
-        },
+
         {
           "@type": "cr:Field",
           "name": "club_performance",
           "dataType": "sc:Number",
           "description": "Club performance indicator."
         },
+
         {
           "@type": "cr:Field",
           "name": "relegation",
           "dataType": "sc:Boolean",
           "description": "Whether the club was relegated."
         },
+
         {
           "@type": "cr:Field",
           "name": "success_or_not",
           "dataType": "sc:Boolean",
           "description": "Whether the transfer was considered successful."
         },
+
         {
           "@type": "cr:Field",
           "name": "total_games",
@@ -95,6 +137,7 @@
           "unitText": "matches",
           "description": "Total games played."
         },
+
         {
           "@type": "cr:Field",
           "name": "assists",
@@ -102,6 +145,7 @@
           "unitText": "assists",
           "description": "Total assists recorded."
         },
+
         {
           "@type": "cr:Field",
           "name": "penalty_kicks",
@@ -109,6 +153,7 @@
           "unitText": "penalties",
           "description": "Penalty kicks scored."
         },
+
         {
           "@type": "cr:Field",
           "name": "total_minutes",
@@ -116,6 +161,7 @@
           "unitText": "minutes",
           "description": "Total minutes played."
         },
+
         {
           "@type": "cr:Field",
           "name": "total_goals",
@@ -123,6 +169,7 @@
           "unitText": "goals",
           "description": "Total goals scored."
         },
+
         {
           "@type": "cr:Field",
           "name": "height",
@@ -130,6 +177,7 @@
           "unitText": "centimeters",
           "description": "Player height."
         },
+
         {
           "@type": "cr:Field",
           "name": "start_value",
@@ -137,6 +185,7 @@
           "unitText": "EUR",
           "description": "Initial player market value."
         },
+
         {
           "@type": "cr:Field",
           "name": "end_value",
@@ -144,6 +193,7 @@
           "unitText": "EUR",
           "description": "Final player market value."
         },
+
         {
           "@type": "cr:Field",
           "name": "delta_value",
@@ -151,6 +201,7 @@
           "unitText": "EUR",
           "description": "Difference between final and initial market value."
         },
+
         {
           "@type": "cr:Field",
           "name": "value_0_mln",
@@ -158,6 +209,7 @@
           "unitText": "million EUR",
           "description": "Initial player value in millions."
         },
+
         {
           "@type": "cr:Field",
           "name": "value_end_mln",
@@ -165,18 +217,13 @@
           "unitText": "million EUR",
           "description": "Final player value in millions."
         },
+
         {
           "@type": "cr:Field",
           "name": "value_delta_mln",
           "dataType": "sc:Number",
           "unitText": "million EUR",
-          "description": "Difference between final and initial value in millions."
-        },
-        {
-          "@type": "cr:Field",
-          "name": "season",
-          "dataType": "sc:Integer",
-          "description": "Season year."
+          "description": "Difference between final and initial player value in millions."
         }
       ]
     }

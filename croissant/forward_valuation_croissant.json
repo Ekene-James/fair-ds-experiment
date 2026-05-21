@@ -4,33 +4,59 @@
     "sc": "https://schema.org/",
     "cr": "http://mlcommons.org/croissant/"
   },
+
   "@type": "sc:Dataset",
+
   "name": "Forward Football Player Valuation Dataset",
-  "description": "Dataset containing valuation, popularity, and football performance statistics for professional forward players. Used for market value prediction experiments.",
+
+  "description": "Dataset containing valuation, popularity, and football performance statistics for professional forward players. The dataset is used for market value prediction experiments and sports analytics workflows.",
+
   "keywords": [
     "football",
     "soccer",
     "market value",
     "sports analytics",
-    "machine learning"
+    "machine learning",
+    "player valuation"
   ],
-  "license": "Academic Use",
+  "datePublished": "2024",
+
+  "license": "CC BY 4.0",
+
+  "identifier": "10.17632/cgc33scxg7.1",
+
   "creator": {
     "@type": "Person",
-    "name": "Briseño & Rivera"
+    "name": "Hugo Briseño & José Carlos Rivera"
   },
-  "url": "https://test.dbrepo.tuwien.ac.at/database/be8863ae-9794-4ee2-a964-3e22133b3840",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mendeley Data"
+  },
+
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Forward football player valuation",
+    "identifier": "10.17632/cgc33scxg7.1"
+  },
+
+  "url": "https://data.mendeley.com/datasets/cgc33scxg7/1",
+
   "distribution": {
     "@type": "cr:FileObject",
     "name": "Dataset soccerplayers.xlsx",
     "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "contentUrl": "https://test.dbrepo.tuwien.ac.at/database/be8863ae-9794-4ee2-a964-3e22133b3840"
+    "contentUrl": "https://data.mendeley.com/datasets/cgc33scxg7/1"
   },
+
   "recordSet": [
     {
       "@type": "cr:RecordSet",
+
       "name": "forward_player_valuation",
-      "description": "Forward-player valuation observations and player statistics.",
+
+      "description": "Forward-player valuation observations and football performance metrics.",
+
       "field": [
         {
           "@type": "cr:Field",
@@ -38,6 +64,7 @@
           "dataType": "sc:Text",
           "description": "Player name."
         },
+
         {
           "@type": "cr:Field",
           "name": "VALUE",
@@ -45,12 +72,14 @@
           "unitText": "million EUR",
           "description": "Estimated player market value."
         },
+
         {
           "@type": "cr:Field",
           "name": "VALUE_R",
           "dataType": "sc:Integer",
           "description": "Relative player market value ranking."
         },
+
         {
           "@type": "cr:Field",
           "name": "AGE",
@@ -58,18 +87,21 @@
           "unitText": "years",
           "description": "Player age."
         },
+
         {
           "@type": "cr:Field",
           "name": "TEAM",
           "dataType": "sc:Text",
           "description": "Current football club."
         },
+
         {
           "@type": "cr:Field",
           "name": "EUROPA",
           "dataType": "sc:Boolean",
           "description": "Whether the player competes in Europe."
         },
+
         {
           "@type": "cr:Field",
           "name": "MATCHES",
@@ -77,6 +109,7 @@
           "unitText": "matches",
           "description": "Total matches played."
         },
+
         {
           "@type": "cr:Field",
           "name": "GOALS",
@@ -84,6 +117,7 @@
           "unitText": "goals",
           "description": "Total goals scored."
         },
+
         {
           "@type": "cr:Field",
           "name": "ASSISTS",
@@ -91,13 +125,15 @@
           "unitText": "assists",
           "description": "Total assists recorded."
         },
+
         {
           "@type": "cr:Field",
           "name": "MPG",
           "dataType": "sc:Number",
           "unitText": "minutes",
-          "description": "Average minutes per goal."
+          "description": "Average minutes required per goal."
         },
+
         {
           "@type": "cr:Field",
           "name": "MINUTES",
@@ -105,6 +141,7 @@
           "unitText": "minutes",
           "description": "Total minutes played."
         },
+
         {
           "@type": "cr:Field",
           "name": "INSTA",

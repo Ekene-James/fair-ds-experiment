@@ -485,6 +485,22 @@ The REST API implementation preserves:
 
 The reimplemented API-based workflow reproduces the same analytical pipeline and equivalent experimental behavior as the original local-file implementation while fully satisfying the DBRepo integration requirements.
 
+# Croissant Metadata
+
+Croissant JSON-LD metadata records were created for both datasets used in the experiment:
+
+- `croissant/forward_valuation_croissant.json`
+- `croissant/transfer_value_croissant.json`
+
+The metadata records describe:
+
+- dataset structure
+- field names
+- datatypes
+- units
+- dataset provenance
+- distributions
+
 ## 📜 Licenses
 
 ### Input Data
