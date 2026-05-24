@@ -1,145 +1,103 @@
-# FAIR Data Science Experiment
+# Predicting the Market Value of Football Players Using Various Factors
 
-## 📌 Project Title
-
-Predicting the Market Value of Football Players Using Various Factors
+[![DOI](https://zenodo.org/badge/1224517548.svg)](https://doi.org/10.5281/zenodo.20357906)
 
 ---
 
-## 📄 Abstract
+## Abstract
 
-This project focuses on predicting the market value of football players using machine learning techniques and FAIR data science practices. The experiment analyses multiple factors influencing player valuation, including player attributes, position, club context, league differences, transfers, career progression, and performance statistics.
+This project predicts the market value of football players using machine learning and FAIR data science practices. It analyses factors including player age, position, club context, nationality, career progression, and performance statistics across multiple seasons.
 
-The project reuses openly accessible football datasets from Mendeley Data and follows FAIR principles to ensure reproducibility, accessibility, interoperability, and reusability.
+The project reuses two openly licensed football datasets from Mendeley Data, stores and queries them via DBRepo, and trains an XGBoost regression model to predict end-of-season transfer market value (`value_end_mln`). All data infrastructure, metadata, and experiment outputs follow FAIR principles to ensure reproducibility, accessibility, interoperability, and reusability.
 
-The workflow includes:
-
-- data ingestion
-- preprocessing and cleaning
-- exploratory data analysis
-- feature engineering
-- machine learning model development
-- evaluation and validation
-- generation of outputs such as predictions, charts, trained models, and performance metrics
-
-The repository also integrates FAIR metadata standards including FAIR4ML, RO-Crate, CodeMeta, Croissant, and Model Cards.
+The repository integrates FAIR metadata standards: FAIR4ML, RO-Crate, CodeMeta, Croissant, and Model Cards.
 
 ---
 
-## 📁 File Organisation
+## Repository Structure
 
-The repository is structured as follows:
-
-- `data/` → Input datasets used in the experiment
-- `src/` → Source code (scripts, notebooks, pipelines)
-- `outputs/` → Generated results (figures, predictions, models)
-- `docs/` → Documentation and reports
-- `config/` → Configuration files (YAML, JSON, environment settings)
-- `models/` → Trained machine learning models
-- `notebooks/` → Jupyter notebooks used during analysis
-- `tests/` → Reproducibility and metadata validation tests
-- `dbrepo/` → DBRepo schema and metadata files
+```
+fair-ds-experiment/
+├── notebooks/
+│   ├── Project.ipynb                        # Original experiment (local file reads)
+│   ├── Project_api.ipynb                    # T2.6 reimplementation (DBRepo REST API)
+│   ├── dbrepo_create_tables.ipynb           # T2.1 schema creation in DBRepo
+│   ├── dbrepo_normalize_clean_export.ipynb  # T2.5 normalisation and CSV export
+│   ├── T2_4_create_views.ipynb              # T2.4 view creation and API data retrieval
+│   ├── models/                              # Trained model artefacts
+│   ├── normalized_exports/                  # Normalised CSVs ready for DBRepo upload
+│   └── outputs/                             # Evaluation metrics, predictions, figures
+├── dbrepo/
+│   └── schema.sql                           # 3NF schema SQL (CREATE TABLE statements)
+├── croissant/
+│   ├── forward_valuation_croissant.json     # Croissant metadata — Dataset 1
+│   └── transfer_value_croissant.json        # Croissant metadata — Dataset 2
+├── docs/
+│   ├── model-card.md                        # Model Card for XGBoost regressor
+│   ├── unit-mapping.md                      # SI unit ontology mappings (T2.3)
+│   └── dbrepo-verification.md               # DBRepo schema verification notes
+├── ro-crate-metadata.json                   # RO-Crate experiment package description
+├── codemeta.json                            # CodeMeta 2.0 software metadata
+├── fair4ml.json                             # FAIR4ML model metadata
+├── CITATION.cff                             # Citation file referencing Zenodo DOI
+├── LICENSE                                  # MIT License (source code)
+└── README.md
+```
 
 ---
 
-## 🧾 File Naming Convention
+## File Naming Convention
 
-A consistent naming scheme is used across the project.
+### Input Datasets (`data/`)
 
-### 1. Input Data
-
-Format:
-
-```text
+```
 data_<source>_<description>_<version>.<ext>
 ```
 
 Examples:
 
-```text
+```
 data_forward_player_valuation_v1.xlsx
 data_transfer_value_determinants_v2.xlsx
 ```
 
----
+### Output Files (`notebooks/outputs/`)
 
-### 2. Output Files
+| Type                | Format                                          | Example                                       |
+| ------------------- | ----------------------------------------------- | --------------------------------------------- |
+| Figures             | `fig_<experiment>_<metric>_<date>.png`          | `fig_market_value_accuracy_2026.png`          |
+| Model artefacts     | `model_<algorithm>_<dataset>_<version>.pkl`     | `model_xgboost_player_value_v1.pkl`           |
+| API model artefacts | `model_<algorithm>_<dataset>_<version>_api.pkl` | `model_xgboost_player_value_v1_api.pkl`       |
+| Results             | `results_<experiment>_<version>.csv`            | `results_market_value_predictions_v1.csv`     |
+| API results         | `results_<experiment>_<version>_api.csv`        | `results_market_value_predictions_v1_api.csv` |
 
-#### Figures
+The `_api` suffix distinguishes outputs produced by the DBRepo API reimplementation (`Project_api.ipynb`) from those produced by the original local-file version (`Project.ipynb`).
 
-```text
-fig_<experiment>_<metric>_<date>.png
+### Source Code (`notebooks/`)
+
 ```
-
-Example:
-
-```text
-fig_market_value_model_accuracy_2026.png
-```
-
-#### Model Artefacts
-
-```text
-model_<algorithm>_<dataset>_<version>.pkl
-```
-
-Example:
-
-```text
-model_xgboost_player_value_v1.pkl
-```
-
-#### Results
-
-```text
-results_<experiment>_<version>.csv
-```
-
-Example:
-
-```text
-results_market_value_predictions_v1.csv
-```
-
----
-
-### 3. Source Code Scripts
-
-Format:
-
-```text
-<step>_<task_description>.py
+<step>_<task_description>.ipynb / .py
 ```
 
 Examples:
 
-```text
-01_data_cleaning.py
-02_feature_engineering.py
-03_exploratory_analysis.py
-04_model_training.py
-05_model_evaluation.py
+```
+dbrepo_create_tables.ipynb
+dbrepo_normalize_clean_export.ipynb
+T2_4_create_views.ipynb
+Project.ipynb
+Project_api.ipynb
 ```
 
----
+### Configuration Files (`config/`)
 
-### 4. Configuration Files
-
-Format:
-
-```text
+```
 config_<purpose>.yaml
 ```
 
-Example:
-
-```text
-config_training.yaml
-```
-
 ---
 
-## ⚙️ Installation
+## Installation
 
 Clone the repository:
 
@@ -148,7 +106,7 @@ git clone https://github.com/bilalhussain3223/fair-ds-experiment.git
 cd fair-ds-experiment
 ```
 
-Install required dependencies:
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -156,404 +114,289 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Reproducing the Experiment
+## Reproducing the Experiment
 
-Run the following scripts in order:
+### Option A — Original local-file version
 
-```bash
-python src/01_data_cleaning.py
-python src/02_feature_engineering.py
-python src/03_exploratory_analysis.py
-python src/04_model_training.py
-python src/05_model_evaluation.py
+Place the two input Excel files in `data/`:
+
+- `data_forward_player_valuation_v1.xlsx` (from DOI: 10.17632/cgc33scxg7.1)
+- `data_transfer_value_determinants_v2.xlsx` (from DOI: 10.17632/3btg6ptc7b.2)
+
+Then open and run `notebooks/Project.ipynb` top to bottom.
+
+Outputs will be saved to `notebooks/outputs/`:
+
+- `evaluation_metrics.csv`
+- `predictions.csv`
+
+And the trained model to `notebooks/models/`:
+
+- `final_model.pkl`
+
+### Option B — DBRepo API reimplementation (T2.6)
+
+Ensure you have a DBRepo account with read access to database `598ce585-d8b5-4a97-8f19-cb085d4a5b1e`.
+
+Open and run `notebooks/Project_api.ipynb`. When prompted, enter your DBRepo credentials. No local data files are required — all data is retrieved from the DBRepo REST API.
+
+API outputs are saved with the `_api` suffix alongside the local outputs:
+
+- `notebooks/outputs/evaluation_metrics_api.csv`
+- `notebooks/outputs/predictions_api.csv`
+- `notebooks/outputs/transfer_data_from_api.csv` (raw API data audit trail)
+- `notebooks/models/final_model_api.pkl`
+
+---
+
+## Input Datasets
+
+Both datasets are reused from Mendeley Data under CC BY 4.0. The group is not the original publisher or rights holder.
+
+### Dataset 1 — Forward Football Player Valuation
+
+| Field     | Value                                 |
+| --------- | ------------------------------------- |
+| Authors   | Hugo Briseño; José Carlos Rivera      |
+| Publisher | Mendeley Data                         |
+| Version   | V1                                    |
+| DOI       | https://doi.org/10.17632/cgc33scxg7.1 |
+| Licence   | CC BY 4.0                             |
+| File      | `soccerplayers.xlsx`                  |
+
+Contains 438 forward players with attributes: age, club, market value, matches played, goals, assists, minutes played, minutes per goal, Instagram followers, European league participation.
+
+### Dataset 2 — Transfer Value Determinants
+
+| Field     | Value                                 |
+| --------- | ------------------------------------- |
+| Author    | Ronald Nisanov                        |
+| Publisher | Mendeley Data                         |
+| Version   | V2                                    |
+| DOI       | https://doi.org/10.17632/3btg6ptc7b.2 |
+| Licence   | CC BY 4.0                             |
+| File      | `Nisanov_final_data.xlsx`             |
+
+Contains 2,502 player-season observations across 2019–2023 with attributes: position, nationality, club, age, height, total games, goals, assists, minutes, penalty kicks, club performance, relegation, transfer values (start, end, delta) in EUR and millions. **Primary ML training dataset.**
+
+---
+
+## Generated Outputs
+
+| File                                           | Description                                     |
+| ---------------------------------------------- | ----------------------------------------------- |
+| `notebooks/outputs/evaluation_metrics.csv`     | R², MSE, RMSE, MAE (local version)              |
+| `notebooks/outputs/predictions.csv`            | Per-player test set predictions (local version) |
+| `notebooks/outputs/evaluation_metrics_api.csv` | Same metrics from DBRepo API version            |
+| `notebooks/outputs/predictions_api.csv`        | Same predictions from DBRepo API version        |
+| `notebooks/outputs/transfer_data_from_api.csv` | Raw data retrieved from DBRepo (audit trail)    |
+| `notebooks/models/final_model.pkl`             | Trained XGBoost pipeline (local version)        |
+| `notebooks/models/final_model_api.pkl`         | Trained XGBoost pipeline (API version)          |
+
+---
+
+## DBRepo Data Infrastructure
+
+### Database
+
+| Field        | Value                                                                          |
+| ------------ | ------------------------------------------------------------------------------ |
+| Instance     | TU Wien DBRepo (test)                                                          |
+| Database URL | https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e |
+| Owner        | Edeh Ekene (Student D)                                                         |
+| Schema       | `dbrepo/schema.sql`                                                            |
+
+### Tables
+
+The database implements a 3NF schema with 8 tables:
+
+| Table                        | Description                                     | Rows  |
+| ---------------------------- | ----------------------------------------------- | ----- |
+| `source_dataset`             | Provenance metadata for both source datasets    | 2     |
+| `player`                     | Deduplicated player name lookup                 | —     |
+| `club`                       | Deduplicated club name lookup                   | —     |
+| `position`                   | Position name lookup (Dataset 2)                | —     |
+| `nationality`                | Nationality name lookup (Dataset 2)             | —     |
+| `season`                     | Season years 2019–2023 (pre-inserted by schema) | 5     |
+| `forward_player_valuation`   | Dataset 1 fact table                            | 438   |
+| `transfer_value_observation` | Dataset 2 fact table                            | 2,502 |
+
+The schema SQL with all CREATE TABLE statements is in `dbrepo/schema.sql`. The ER diagram is in `docs/`.
+
+### Views (T2.4)
+
+Created via `notebooks/T2_4_create_views.ipynb`:
+
+| View                       | Primary Table                | Target Variable    | Purpose                           |
+| -------------------------- | ---------------------------- | ------------------ | --------------------------------- |
+| `vw_transfer_features`     | `transfer_value_observation` | `value_end_mln`    | Primary ML training data          |
+| `vw_forward_features`      | `forward_player_valuation`   | `market_value_mln` | Dataset 1 ML features             |
+| `vw_combined_player_value` | `forward_player_valuation`   | `market_value_mln` | Cross-dataset exploration         |
+| `vw_player_lookup`         | `player`                     | —                  | player_id → player_name           |
+| `vw_club_lookup`           | `club`                       | —                  | club_id → club_name               |
+| `vw_position_lookup`       | `position`                   | —                  | position_id → position_name       |
+| `vw_nationality_lookup`    | `nationality`                | —                  | nationality_id → nationality_name |
+
+Views expose fact table columns without joins (a workaround for a DBRepo SDK mapper limitation with inhomogeneous table schemas). Lookup data is merged locally in pandas after REST API retrieval.
+
+---
+
+## DBRepo REST API Reimplementation (T2.6)
+
+The original experiment (`Project.ipynb`) reads from local Excel files. The reimplemented version (`Project_api.ipynb`) retrieves all data exclusively from the DBRepo REST API — no local file reads are permitted.
+
+### API Base URL
+
 ```
-
-Generated outputs will automatically be stored in the `outputs/` directory.
-
----
-
-## 📊 Inputs and Outputs
-
-### Input Data
-
-The project uses openly accessible football datasets from Mendeley Data.
-
-### Dataset 1
-
-**Forward football player valuation**
-
-DOI:
-https://doi.org/10.17632/cgc33scxg7.1
-
-License:
-CC BY 4.0
-
-### Dataset 2
-
-**Transfer Value Determinants**
-
-DOI:
-https://doi.org/10.17632/3btg6ptc7b.2
-
-License:
-CC BY 4.0
-
----
-
-### Input Features
-
-The datasets include attributes such as:
-
-- Player age
-- Position
-- Nationality
-- Club
-- League
-- Market value
-- Matches played
-- Goals
-- Assists
-- Minutes played
-- Transfer history
-- Social media metrics
-- Career progression indicators
-
----
-
-### Generated Outputs
-
-The experiment produces:
-
-- Histograms
-- Correlation plots
-- Performance comparison charts
-- Prediction CSV files
-- Trained machine learning models
-- Performance evaluation metrics
-- Regression evaluation reports
-- Visualisations and analytical summaries
-
-Example outputs:
-
-```text
-outputs/model_performance.png
-outputs/predictions.csv
-outputs/regression_metrics.txt
-outputs/feature_importance.png
-```
-
----
-
-## 🗄️ DBRepo Integration
-
-The project includes a structured DBRepo schema for managing and organising football player valuation data.
-
-### DBRepo Tables
-
-- `source_dataset`
-- `player`
-- `club`
-- `position`
-- `nationality`
-- `season`
-- `forward_player_valuation`
-- `transfer_value_observation`
-
-The schema and ER diagram are available in the `dbrepo/` directory.
-
----
-
-## 🔁 Reproducibility
-
-The repository is structured to ensure reproducibility of the experiment. All preprocessing, training, and evaluation steps are documented and version controlled.
-
-Metadata standards and FAIR documentation files are included to improve discoverability and reuse of the experiment outputs.
-
-The project includes:
-
-- structured folder organisation
-- documented workflows
-- version-controlled notebooks and scripts
-- FAIR metadata files
-- reproducibility tests
-- data provenance tracking
-
----
-
-## 📚 FAIR Metadata Standards
-
-The project integrates the following FAIR-related metadata standards:
-
-- RO-Crate
-- CodeMeta
-- FAIR4ML
-- Croissant
-- Model Cards
-
-These metadata artefacts improve interoperability, machine readability, discoverability, and long-term reuse of the experiment.
-
----
-
-## 📄 Documentation
-
-The repository includes additional documentation files:
-
-- `README.md`
-- `docs/model-card.md`
-- `docs/unit-mapping.md`
-- `docs/dbrepo-verification.md`
-- `docs/final-dmp.pdf`
-- `ro-crate-metadata.json`
-- `codemeta.json`
-- `fair4ml.json`
-
----
-
-# DBRepo REST API Reimplementation
-
-## Overview
-
-The original experiment loaded datasets from local CSV/Excel files using pandas.
-
-To satisfy T2.6, the pipeline was fully reimplemented to retrieve data exclusively through the DBRepo REST API. All local file reads (`pd.read_csv`, `pd.read_excel`) were deprecated and replaced with:
-
-- DBRepo view retrieval
-- REST API access
-- local pandas reconstruction of denormalized ML-ready datasets because of current DBRepo SDK mapper limitations affecting large multi-table joins
-
-Final workflow:
-
-```text
-DBRepo Views
-    ↓
-REST API Retrieval
-    ↓
-Local pandas merges
-    ↓
-ML-ready DataFrames
-```
-
-No local CSV or Excel files are used in the final experiment pipeline.
-
----
-
-## API Configuration
-
-### Base URL
-
-```text
 https://test.dbrepo.tuwien.ac.at
 ```
 
 ### Endpoints Used
 
-| Endpoint                                             | Purpose                  |
-| ---------------------------------------------------- | ------------------------ |
-| `/api/v1/database/{database_id}/view`                | Retrieve available views |
-| `/api/v1/database/{database_id}/view/{view_id}/data` | Retrieve view data       |
+| Endpoint                                         | Method | Purpose          |
+| ------------------------------------------------ | ------ | ---------------- |
+| `/api/v1/database/{db_id}/view`                  | GET    | List all views   |
+| `/api/v1/database/{db_id}/view/{view_id}/data`   | GET    | Fetch view data  |
+| `/api/v1/database/{db_id}/table`                 | GET    | List all tables  |
+| `/api/v1/database/{db_id}/table/{table_id}/data` | GET    | Fetch table data |
+
+**Database ID:** `598ce585-d8b5-4a97-8f19-cb085d4a5b1e`
 
 ### Authentication
 
-Authentication is handled through the DBRepo Python SDK using username/password credentials:
+HTTP Basic Auth via the DBRepo Python SDK (`dbrepo==1.13.3`). Credentials are entered at runtime and never stored in the repository.
 
 ```python
 client = RestClient(
-    base_url="https://test.dbrepo.tuwien.ac.at",
+    endpoint="https://test.dbrepo.tuwien.ac.at",
     username=USERNAME,
-    password=PASSWORD,
+    password=password,   # entered via getpass() at runtime
 )
 ```
 
-Credentials are supplied at runtime and are not stored in the repository.
+### Data Loading Workflow
 
----
-
-## Views Used in the Final Experiment
-
-### Primary ML View
-
-#### `vw_transfer_features`
-
-Main view used in the final regression experiment.
-
-Contains:
-
-- transfer-market numerical features
-- player-performance metrics
-- target variable: `value_end_mln`
-- FK identifiers for lookup reconstruction
-
-Used in:
-
-- preprocessing
-- feature engineering
-- model training
-- evaluation
-
-Retrieved through:
-
-```python
-load_transfer_dataset(client)
+```
+DBRepo REST API
+    ↓
+get_view_data()        →  vw_transfer_features (2,502 rows)
+get_view_data()        →  vw_forward_features (438 rows)
+get_table_data()       →  player, club, position, nationality lookup tables
+    ↓
+pandas merge           →  denormalised ML-ready DataFrames
+    ↓
+Column rename          →  match original Project.ipynb column names
+    ↓
+XGBoost training       →  identical pipeline to local version
 ```
 
-Final dataframe:
+Note: lookup views (`vw_player_lookup` etc.) return HTTP 500 when tables are small due to a DBRepo server bug. These are fetched via `get_table_data()` instead of the view API.
 
-```python
-merged_transfer_df
-```
+### Results Equivalence
 
----
+The API reimplementation produces results within 8% of the original local-file version:
 
-### Lookup Views Used During Reconstruction
+| Metric | Local version | API version | Difference |
+| ------ | ------------- | ----------- | ---------- |
+| R²     | 0.8702        | 0.8689      | 0.15%      |
+| RMSE   | 8.0957        | 8.6637      | 7.02%      |
+| MAE    | 5.5635        | 5.7851      | 3.98%      |
 
-The following views were retrieved separately and merged locally through pandas:
+The minor difference is attributable to two storage effects: (1) `DECIMAL(12,3)` precision rounding applied to `value_start_mln` during database storage, and (2) 17 rows where `start_value_eur` was NULL in the source data but stored as `0.0` in DBRepo due to a NOT NULL column constraint set during table creation. These rows are treated differently by the `SimpleImputer(strategy='median')`, causing a small but measurable shift in predictions. The results are considered equivalent. See Section 12 of `Project_api.ipynb` for the full equivalence check.
 
-| View                    | Purpose                        |
-| ----------------------- | ------------------------------ |
-| `vw_player_lookup`      | reconstruct `player_name`      |
-| `vw_club_lookup`        | reconstruct `club_name`        |
-| `vw_position_lookup`    | reconstruct `position_name`    |
-| `vw_nationality_lookup` | reconstruct `nationality_name` |
+### Data Provenance
 
-Example reconstruction:
-
-```python
-merged_transfer_df = (
-    transfer_df
-    .merge(player_df, on="player_id", how="left")
-    .merge(club_df, on="club_id", how="left")
-    .merge(position_df, on="position_id", how="left")
-    .merge(nationality_df, on="nationality_id", how="left")
-)
-```
+| Item                  | Value                                                                          |
+| --------------------- | ------------------------------------------------------------------------------ |
+| Database              | https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e |
+| Primary view          | `vw_transfer_features`                                                         |
+| Source dataset DOI    | https://doi.org/10.17632/3btg6ptc7b.2                                          |
+| Source dataset DOI    | https://doi.org/10.17632/cgc33scxg7.1                                          |
+| Model deposit (TUWRD) | https://doi.org/10.70124/c35xx-9pb93                                           |
+| Code DOI (Zenodo)     | https://doi.org/10.5281/zenodo.20357906                                        |
+| SDK version           | dbrepo==1.13.3                                                                 |
+| Raw API data saved to | `notebooks/outputs/transfer_data_from_api.csv`                                 |
 
 ---
 
-### Additional Implemented Views
+## Croissant Metadata (T3.4)
 
-The following views were implemented as part of the DBRepo architecture but were not directly used in the final regression workflow:
+Croissant JSON-LD metadata records are provided for both input datasets:
 
-| View                       | Purpose                            |
-| -------------------------- | ---------------------------------- |
-| `vw_forward_features`      | Dataset 1 valuation analysis       |
-| `vw_combined_player_value` | Cross-dataset exploratory analysis |
+| File                                         | Dataset                                       |
+| -------------------------------------------- | --------------------------------------------- |
+| `croissant/forward_valuation_croissant.json` | Forward football player valuation (Dataset 1) |
+| `croissant/transfer_value_croissant.json`    | Transfer Value Determinants (Dataset 2)       |
 
-Associated reconstructed dataframes:
-
-- `merged_forward_df`
-- `merged_combined_df`
+Each record describes field names, data types, units (referencing QUDT URIs from T2.3), distribution information, and licence.
 
 ---
 
-### Reusable Loader Module
+## FAIR Metadata Standards
 
-All REST API retrieval and dataframe reconstruction logic was centralized inside:
-
-```text
-notebooks/utils/dbrepo_loader.py
-```
-
-Main functions:
-
-- `get_client()`
-- `fetch_view_df()`
-- `load_lookup_tables()`
-- `load_transfer_dataset()`
-- `load_forward_dataset()`
-- `load_combined_dataset()`
+| Standard   | File                     | Purpose                                                          |
+| ---------- | ------------------------ | ---------------------------------------------------------------- |
+| RO-Crate   | `ro-crate-metadata.json` | Experiment package description with all entity relationships     |
+| CodeMeta   | `codemeta.json`          | Software metadata (authors, dependencies, licence, version)      |
+| FAIR4ML    | `fair4ml.json`           | ML model metadata (hyperparameters, metrics, training data DOI)  |
+| Croissant  | `croissant/`             | Dataset field-level metadata with units and distributions        |
+| Model Card | `docs/model-card.md`     | Model description, intended use, evaluation results, limitations |
 
 ---
 
-### Error Handling
-
-Robust error handling was implemented for:
-
-- connection failures
-- unexpected response codes
-- missing views
-- DBRepo internal server errors
-- empty responses
-
-### Verification
-
-The REST API implementation preserves:
-
-- identical preprocessing logic
-- identical train/test splitting
-- identical feature engineering
-- identical model configuration
-
-The reimplemented API-based workflow reproduces the same analytical pipeline and equivalent experimental behavior as the original local-file implementation while fully satisfying the DBRepo integration requirements.
-
-# Croissant Metadata
-
-Croissant JSON-LD metadata records were created for both datasets used in the experiment:
-
-- `croissant/forward_valuation_croissant.json`
-- `croissant/transfer_value_croissant.json`
-
-The metadata records describe:
-
-- dataset structure
-- field names
-- datatypes
-- units
-- dataset provenance
-- distributions
-
-## 📜 Licenses
+## Licences
 
 ### Input Data
 
-The reused football datasets are distributed under the original CC BY 4.0 licenses provided by the dataset publishers.
+Both source datasets are licensed under **CC BY 4.0** by their original publishers (Mendeley Data). The group reuses the data under the terms of this licence. CC BY 4.0 permits redistribution and adaptation with attribution. It does not impose ShareAlike obligations, so the output data licence is not constrained by the input licence.
 
 ### Source Code
 
-The source code in this repository is licensed under the MIT License.
+The source code in this repository is licensed under the **MIT Licence**. See `LICENSE`. MIT is compatible with CC BY 4.0 input data — it imposes no restrictions that conflict with the attribution-only requirement of CC BY 4.0.
 
 ### Generated Outputs
 
-Generated outputs, trained models, visualisations, and evaluation artefacts are shared under the CC BY 4.0 License where legally permissible.
+Trained models, predictions, evaluation metrics, and figures are shared under **CC BY 4.0**. This licence is stated in every TUWRD deposit record and in the RO-Crate metadata.
 
 ---
 
-## 👥 Contributors
+## Deposits and Persistent Identifiers
+
+| Artefact                 | Repository    | DOI / URL                                                                      |
+| ------------------------ | ------------- | ------------------------------------------------------------------------------ |
+| Code repository (Zenodo) | Zenodo        | https://doi.org/10.5281/zenodo.20357906                                        |
+| Trained model            | TUWRD (test)  | https://doi.org/10.70124/c35xx-9pb93                                           |
+| Generated output data    | TUWRD (test)  | _(add DOI after B completes T3.10)_                                            |
+| DMP record               | TUWRD (test)  | _(add DOI after A completes T4.4)_                                             |
+| DBRepo database          | DBRepo (test) | https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e |
+| Dataset 1                | Mendeley Data | https://doi.org/10.17632/cgc33scxg7.1                                          |
+| Dataset 2                | Mendeley Data | https://doi.org/10.17632/3btg6ptc7b.2                                          |
+
+---
+
+## Contributors
 
 | Role | Name                   | Student ID | ORCID                                 |
-| ---- | ---------------------- | ---------- | ------------------------------------- | ------------------------------------- |
+| ---- | ---------------------- | ---------- | ------------------------------------- |
 | A    | Konrad Szegedy         | 12024699   | https://orcid.org/0009-0009-2299-752X |
-| B    | Muhammad Athar Riaz    | 12449141   | Not available                         |
+| B    | Muhammad Athar Riaz    | 12449141   | _(not available)_                     |
 | C    | Muhammad Bilal Hussain | 12442081   | https://orcid.org/0009-0000-2512-9167 |
-| D    | Edeh Ekene             | 12451120   | Not available                         | https://orcid.org/0009-0007-2481-389X |
+| D    | Edeh Ekene             | 12451120   | https://orcid.org/0009-0007-2481-389X |
 
 ---
 
-## 🔗 Repository
+## Citation
 
-GitHub Repository:
+A `CITATION.cff` file is included in the repository root. To cite this experiment:
 
-https://github.com/bilalhussain3223/fair-ds-experiment
-
----
-
-## 📌 DOI
-
-### Model DOI
-
-https://doi.org/10.70124/c35xx-9pb93
-
-Additional repository and dataset DOIs will be added after final repository release and Zenodo integration.
+```
+Szegedy, K., Riaz, M. A., Hussain, M. B., & Edeh, E. (2026).
+Predicting the Market Value of Football Players Using Various Factors.
+Zenodo. https://doi.org/10.5281/zenodo.20357906
+```
 
 ---
 
-## 📄 Citation
+## GitHub Repository
 
-A `CITATION.cff` file is included to support proper citation of this experiment and related outputs.
-
----
-
-## 🎯 Project Goal
-
-The main objective of this project is to investigate which factors most strongly influence football player market value and to develop a robust predictive machine learning model capable of estimating player valuations based on multiple sporting and contextual variables.
-
-The project also demonstrates the integration of FAIR principles into a complete machine learning workflow, improving transparency, reproducibility, and reusability of data science experiments.
+https://github.com/Ekene-James/fair-ds-experiment

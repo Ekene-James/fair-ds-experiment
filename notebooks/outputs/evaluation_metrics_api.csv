@@ -1,0 +1,2 @@
+model,target,r2,mse,rmse,mae,test_size,train_size,data_source
+XGBRegressor,value_end_mln,0.8734475246820667,72.46767311131477,8.512794671041629,5.7496005393534935,751,1751,DBRepo REST API — database 598ce585-d8b5-4a97-8f19-cb085d4a5b1e

@@ -108,16 +108,16 @@
           "@id": "https://doi.org/10.17632/3btg6ptc7b.2"
         }
       ],
-      "codeRepository": "https://github.com/bilalhussain3223/fair-ds-experiment",
+      "codeRepository": "https://github.com/Ekene-James/fair-ds-experiment",
       "sameAs": [
         {
-          "@id": "https://github.com/bilalhussain3223/fair-ds-experiment/releases/tag/v0.0.1"
+          "@id": "https://github.com/Ekene-James/fair-ds-experiment/releases/tag/v0.0.1"
         },
         {
-          "@id": "https://zenodo.org/records/TO-BE-REPLACED-ZENODO-RECORD"
+          "@id": "https://doi.org/10.5281/zenodo.20357906"
         },
         {
-          "@id": "https://test.dbrepo.tuwien.ac.at/database/be8863ae-9794-4ee2-a964-3e22133b3840"
+          "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e/info"
         },
         {
           "@id": "https://doi.org/10.70124/c35xx-9pb93"
@@ -268,15 +268,12 @@
     },
     {
       "@id": "dbrepo/schema.sql",
-      "@type": [
-        "File",
-        "SoftwareSourceCode"
-      ],
+      "@type": ["File", "SoftwareSourceCode"],
       "name": "DBRepo relational schema SQL",
       "encodingFormat": "text/sql",
       "programmingLanguage": "SQL",
       "about": {
-        "@id": "https://test.dbrepo.tuwien.ac.at/database/be8863ae-9794-4ee2-a964-3e22133b3840"
+        "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e/info"
       }
     },
     {
@@ -290,10 +287,7 @@
     },
     {
       "@id": "notebooks/dbrepo_create_tables.ipynb",
-      "@type": [
-        "File",
-        "SoftwareSourceCode"
-      ],
+      "@type": ["File", "SoftwareSourceCode"],
       "name": "DBRepo table creation notebook",
       "encodingFormat": "application/x-ipynb+json",
       "programmingLanguage": "Python",
