@@ -1,0 +1,31 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Football Player Market Value Prediction",
+  "description": "Code and metadata for predicting football player market value using reused football player datasets.",
+  "programmingLanguage": "Python",
+  "codeRepository": "https://github.com/alihassan098799/-dast-air-quality-project",
+  "license": "MIT",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Muhammad Athar",
+      "familyName": "Riaz"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Muhammad Bilal",
+      "familyName": "Hussain"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Konrad",
+      "familyName": "Szegedy"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Ekene",
+      "familyName": "Edeh"
+    }
+  ]
+}
