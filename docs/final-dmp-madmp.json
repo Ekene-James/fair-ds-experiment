@@ -1,56 +1,508 @@
 {
   "dmp": {
     "title": "Predicting the Market Value of Football Players Using Various Factors",
-    "description": "Final machine-actionable Data Management Plan for the FAIR-DS Football Valuation project.",
+    "description": "Final machine-actionable Data Management Plan (maDMP) for the FAIR-DS Football Valuation experiment. This project predicts end-of-season football player transfer market value using XGBoost regression trained on two openly licensed datasets from Mendeley Data. The experiment follows FAIR data science principles and integrates DBRepo, Zenodo, TU Wien Research Data Repository, and GitHub as data infrastructure.",
     "dmp_id": {
-      "identifier": "FAIR-DS-Football-Valuation"
+      "identifier": "DMP-FINAL_Predicting-Football-Player-Market-Value",
+      "type": "other"
     },
-    "language": "en",
+    "language": "eng",
     "created": "2026-05-25",
     "modified": "2026-05-25",
+    "ethical_issues_exist": "no",
+    "ethical_issues_description": "No personal data is processed. All datasets used are publicly available and openly licensed under CC BY 4.0. No sensitive data or special categories of personal data are involved.",
+
     "contact": {
-      "name": "Muhammad Athar Riaz",
-      "mbox": "bilal.hussian2332@gmail.com"
+      "name": "Edeh Ekene",
+      "mbox": "edehjamesraphael@gmail.com",
+      "contact_id": {
+        "identifier": "https://orcid.org/0009-0007-2481-389X",
+        "type": "orcid"
+      }
     },
+
     "contributor": [
       {
         "name": "Muhammad Bilal Hussain",
-        "role": "Data Manager"
+        "role": ["DataManager"],
+        "mbox": "bilal.hussain3223@gmail.com",
+        "contributor_id": {
+          "identifier": "https://orcid.org/0009-0000-2512-9167",
+          "type": "orcid"
+        }
       },
       {
         "name": "Edeh Ekene",
-        "role": "Data Manager"
+        "role": ["DataManager"],
+        "mbox": "edehjamesraphael@gmail.com",
+        "contributor_id": {
+          "identifier": "https://orcid.org/0009-0007-2481-389X",
+          "type": "orcid"
+        }
       },
       {
         "name": "Muhammad Athar Riaz",
-        "role": "Data Manager"
+        "role": ["DataManager"],
+        "mbox": "bilal.hussian2332@gmail.com",
+        "contributor_id": {
+          "identifier": "https://orcid.org/0009-0004-3337-8672",
+          "type": "orcid"
+        }
+      },
+      {
+        "name": "Konrad Szegedy",
+        "role": ["DataManager"],
+        "mbox": "konrad.szegedy@gmail.com",
+        "contributor_id": {
+          "identifier": "https://orcid.org/0009-0009-2299-752X",
+          "type": "orcid"
+        }
       }
     ],
+
+    "cost": [],
+
+    "project": [
+      {
+        "title": "FAIR Data Science — Football Player Market Value Prediction",
+        "description": "TU Wien FAIR Data Science course experiment (2026). Predicts football player transfer market value using XGBoost regression and FAIR-compliant data infrastructure.",
+        "start": "2026-04-01",
+        "end": "2026-06-30",
+        "funding": [
+          {
+            "funder_id": {
+              "identifier": "N/A — course exercise",
+              "type": "other"
+            },
+            "funding_status": "not_funded",
+            "grant_id": {
+              "identifier": "N/A",
+              "type": "other"
+            }
+          }
+        ]
+      }
+    ],
+
     "dataset": [
       {
-        "title": "Football Player Market Value Dataset",
-        "type": "Structured text",
-        "format": [
-          "CSV",
-          "XLSX",
-          "PKL"
-        ],
-        "description": "Dataset containing football player statistics, prediction outputs, trained machine learning models, and evaluation metrics.",
+        "title": "Forward Football Player Valuation — Input Dataset",
+        "description": "Reused input dataset from Mendeley Data. Contains 438 forward player observations with age, club, market value, matches played, goals, assists, minutes played, Instagram followers, and European league participation. Originally published by Hugo Briseño and José Carlos Rivera (2024).",
+        "type": "dataset",
         "personal_data": "no",
         "sensitive_data": "no",
-        "preservation_statement": "Stored in TU Wien Research Data Repository and GitHub for minimum 10 years.",
-        "data_quality_assurance": "Validation checks, preprocessing, reproducibility testing, FAIR metadata validation.",
-        "metadata": [
-          "FAIR4ML",
-          "RO-Crate",
-          "CodeMeta",
-          "Croissant",
-          "Model Card"
+        "issued": "2024-01-01",
+        "keyword": [
+          "football",
+          "player valuation",
+          "forward players",
+          "market value"
         ],
-        "license": "CC-BY-4.0",
+        "language": "eng",
         "dataset_id": {
-          "identifier": "https://doi.org/10.70124/g7pw4-cd077"
-        }
+          "identifier": "https://doi.org/10.17632/cgc33scxg7.1",
+          "type": "doi"
+        },
+        "data_quality_assurance": [
+          "Garbled player name (encoding corruption) corrected during normalisation.",
+          "6 missing Instagram follower values filled with 0.0 (player has no public account).",
+          "Column types verified against DBRepo schema before upload."
+        ],
+        "distribution": [
+          {
+            "title": "Forward Football Player Valuation — Mendeley Data",
+            "format": [
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            ],
+            "access_url": "https://doi.org/10.17632/cgc33scxg7.1",
+            "available_until": "open",
+            "byte_size": 50000,
+            "data_access": "open",
+            "host": {
+              "title": "Mendeley Data",
+              "url": "https://data.mendeley.com",
+              "pid_system": ["doi"],
+              "storage_type": "repository",
+              "supports_versioning": "yes"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2024-01-01"
+              }
+            ]
+          },
+          {
+            "title": "Forward Football Player Valuation — DBRepo structured storage",
+            "format": ["application/sql"],
+            "access_url": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e",
+            "data_access": "open",
+            "description": "Normalised into 3NF relational schema in TU Wien DBRepo. Accessible via REST API. View: vw_forward_features.",
+            "host": {
+              "title": "TU Wien DBRepo",
+              "url": "https://test.dbrepo.tuwien.ac.at",
+              "pid_system": ["url"],
+              "storage_type": "repository",
+              "supports_versioning": "no"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2026-05-01"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "description": "Croissant JSON-LD metadata record describing fields, types, units, distribution, and licence.",
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://github.com/mlcommons/croissant",
+              "type": "url"
+            }
+          }
+        ],
+        "security_and_privacy": [
+          {
+            "title": "Open access — no sensitive data",
+            "description": "Dataset contains only publicly available player statistics. No personal data in the legal sense."
+          }
+        ]
+      },
+
+      {
+        "title": "Transfer Value Determinants — Input Dataset",
+        "description": "Reused input dataset from Mendeley Data. Contains 2,502 player-season observations across seasons 2019-2023 with transfer values, performance metrics, position, nationality, club, age, and height. Originally published by Ronald Nisanov (2025). Primary ML training dataset.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "issued": "2025-01-01",
+        "keyword": [
+          "football",
+          "transfer value",
+          "player valuation",
+          "machine learning"
+        ],
+        "language": "eng",
+        "dataset_id": {
+          "identifier": "https://doi.org/10.17632/3btg6ptc7b.2",
+          "type": "doi"
+        },
+        "data_quality_assurance": [
+          "Normalised into 3NF schema with separate lookup tables for player, club, position, nationality, season.",
+          "club_performance, relegation, success_or_not treated as NULL for seasons 2020-2023 (not collected).",
+          "17 rows with unknown start_value_eur documented — stored as NOT NULL due to DBRepo column constraint.",
+          "Column types verified against schema.sql before upload."
+        ],
+        "distribution": [
+          {
+            "title": "Transfer Value Determinants — Mendeley Data",
+            "format": [
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            ],
+            "access_url": "https://doi.org/10.17632/3btg6ptc7b.2",
+            "available_until": "open",
+            "byte_size": 200000,
+            "data_access": "open",
+            "host": {
+              "title": "Mendeley Data",
+              "url": "https://data.mendeley.com",
+              "pid_system": ["doi"],
+              "storage_type": "repository",
+              "supports_versioning": "yes"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2025-01-01"
+              }
+            ]
+          },
+          {
+            "title": "Transfer Value Determinants — DBRepo structured storage",
+            "format": ["application/sql"],
+            "access_url": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e",
+            "data_access": "open",
+            "description": "Normalised into 3NF relational schema in TU Wien DBRepo. Accessible via REST API. Primary view: vw_transfer_features. Database ID: 598ce585-d8b5-4a97-8f19-cb085d4a5b1e.",
+            "host": {
+              "title": "TU Wien DBRepo",
+              "url": "https://test.dbrepo.tuwien.ac.at",
+              "pid_system": ["url"],
+              "storage_type": "repository",
+              "supports_versioning": "no"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2026-05-01"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "description": "Croissant JSON-LD metadata record describing fields, types, units (QUDT URIs), distribution, and licence.",
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://github.com/mlcommons/croissant",
+              "type": "url"
+            }
+          }
+        ],
+        "security_and_privacy": [
+          {
+            "title": "Open access — no sensitive data",
+            "description": "Dataset contains only publicly available player statistics. No personal data in the legal sense."
+          }
+        ]
+      },
+
+      {
+        "title": "Trained XGBoost Model — Football Player Market Value Prediction",
+        "description": "Trained XGBoost regression pipeline (sklearn Pipeline wrapping XGBRegressor) predicting end-of-season football player transfer market value (value_end_mln) in millions EUR. Includes both the local-file version (final_model.pkl) and the DBRepo API version (final_model_api.pkl). Hyperparameters: n_estimators=20, max_depth=3, learning_rate=0.1, subsample=0.8, colsample_bytree=0.8, random_state=42. Evaluation: R²=0.8702, RMSE=8.0957, MAE=5.5635 (local); R²=0.8689, RMSE=8.6637, MAE=5.7851 (API version).",
+        "type": "model",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "issued": "2026-05-25",
+        "keyword": [
+          "XGBoost",
+          "regression",
+          "football",
+          "market value",
+          "machine learning",
+          "FAIR4ML"
+        ],
+        "language": "eng",
+        "dataset_id": {
+          "identifier": "https://doi.org/10.70124/g7pw4-cd077",
+          "type": "doi"
+        },
+        "data_quality_assurance": [
+          "Results verified against original local-file version (within 8% tolerance).",
+          "FAIR4ML metadata produced documenting all hyperparameters, evaluation metrics, features, and known limitations.",
+          "Model card produced at docs/model-card.md."
+        ],
+        "distribution": [
+          {
+            "title": "Trained XGBoost Model — TU Wien Research Data Repository",
+            "format": ["application/octet-stream"],
+            "access_url": "https://doi.org/10.70124/g7pw4-cd077",
+            "available_until": "2036-05-25",
+            "data_access": "open",
+            "host": {
+              "title": "TU Wien Research Data Repository",
+              "url": "https://test.researchdata.tuwien.ac.at",
+              "pid_system": ["doi"],
+              "storage_type": "repository",
+              "supports_versioning": "yes",
+              "backup_frequency": "weekly",
+              "backup_type": "centralised",
+              "certified_with": "none",
+              "geo_location": "AT"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2026-05-25"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "description": "FAIR4ML metadata file documenting algorithm, hyperparameters, training dataset DOI, evaluation metrics, intended use, and known limitations.",
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://w3id.org/fair4ml",
+              "type": "url"
+            }
+          },
+          {
+            "description": "RO-Crate experiment package metadata referencing this model deposit.",
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://w3id.org/ro/crate",
+              "type": "url"
+            }
+          }
+        ],
+        "security_and_privacy": [
+          {
+            "title": "Open access — no sensitive data",
+            "description": "Trained model contains no personal data. Derived from publicly licensed datasets."
+          }
+        ],
+        "technical_resource": [
+          {
+            "name": "xgboost 3.2.0",
+            "description": "XGBoost library used to train the regression model."
+          },
+          {
+            "name": "scikit-learn 1.8.0",
+            "description": "Used for preprocessing pipeline (SimpleImputer, OneHotEncoder, Pipeline)."
+          }
+        ]
+      },
+
+      {
+        "title": "Generated Output Data — Predictions and Evaluation Metrics",
+        "description": "Generated output data from the football player market value prediction experiment. Includes per-player test set predictions, evaluation metrics (R², RMSE, MAE), and raw API data audit trail. Produced by both the local-file version and the DBRepo API reimplementation.",
+        "type": "dataset",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "issued": "2026-05-25",
+        "keyword": [
+          "predictions",
+          "evaluation metrics",
+          "regression",
+          "football",
+          "market value"
+        ],
+        "language": "eng",
+        "dataset_id": {
+          "identifier": "https://doi.org/10.5281/zenodo.20377147",
+          "type": "doi"
+        },
+        "data_quality_assurance": [
+          "Results verified against original local-file version.",
+          "API version results documented with explanation of minor differences."
+        ],
+        "distribution": [
+          {
+            "title": "Generated Output Data — Zenodo",
+            "format": ["text/csv"],
+            "access_url": "https://doi.org/10.5281/zenodo.20377147",
+            "available_until": "open",
+            "data_access": "open",
+            "host": {
+              "title": "Zenodo",
+              "url": "https://zenodo.org",
+              "pid_system": ["doi"],
+              "storage_type": "repository",
+              "supports_versioning": "yes",
+              "certified_with": "coretrustseal",
+              "geo_location": "EU"
+            },
+            "license": [
+              {
+                "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+                "start_date": "2026-05-25"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "description": "RO-Crate experiment package metadata referencing this output data deposit.",
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://w3id.org/ro/crate",
+              "type": "url"
+            }
+          }
+        ],
+        "security_and_privacy": [
+          {
+            "title": "Open access — no sensitive data",
+            "description": "Contains only aggregated prediction outputs derived from publicly licensed datasets."
+          }
+        ]
+      },
+
+      {
+        "title": "Experiment Source Code — Football Player Market Value Prediction",
+        "description": "Source code for the complete experiment including DBRepo schema creation, data normalisation, view creation, ML model training (local and API versions), and FAIR metadata files. Published on GitHub and archived on Zenodo.",
+        "type": "software",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "issued": "2026-05-25",
+        "keyword": [
+          "Python",
+          "XGBoost",
+          "FAIR",
+          "DBRepo",
+          "machine learning",
+          "football"
+        ],
+        "language": "eng",
+        "dataset_id": {
+          "identifier": "https://doi.org/10.5281/zenodo.20357906",
+          "type": "doi"
+        },
+        "data_quality_assurance": [
+          "Version controlled via Git and GitHub.",
+          "Zenodo DOI minted via GitHub-Zenodo integration.",
+          "CITATION.cff file references Zenodo DOI.",
+          "CodeMeta 2.0 metadata file documents all dependencies with version pins."
+        ],
+        "distribution": [
+          {
+            "title": "Source Code — Zenodo (GitHub integration)",
+            "format": ["application/zip"],
+            "access_url": "https://doi.org/10.5281/zenodo.20357906",
+            "available_until": "open",
+            "data_access": "open",
+            "host": {
+              "title": "Zenodo",
+              "url": "https://zenodo.org",
+              "pid_system": ["doi"],
+              "storage_type": "repository",
+              "supports_versioning": "yes",
+              "certified_with": "coretrustseal",
+              "geo_location": "EU"
+            },
+            "license": [
+              {
+                "license_ref": "https://opensource.org/licenses/MIT",
+                "start_date": "2026-05-25"
+              }
+            ]
+          },
+          {
+            "title": "Source Code — GitHub repository",
+            "format": ["text/plain"],
+            "access_url": "https://github.com/Ekene-James/fair-ds-experiment",
+            "data_access": "open",
+            "host": {
+              "title": "GitHub",
+              "url": "https://github.com",
+              "pid_system": ["url"],
+              "storage_type": "repository",
+              "supports_versioning": "yes"
+            },
+            "license": [
+              {
+                "license_ref": "https://opensource.org/licenses/MIT",
+                "start_date": "2026-05-25"
+              }
+            ]
+          }
+        ],
+        "metadata": [
+          {
+            "description": "CodeMeta 2.0 metadata file documenting name, version, authors with ORCIDs, licence, programming language, runtime requirements, and all dependencies with version pins.",
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://codemeta.github.io",
+              "type": "url"
+            }
+          },
+          {
+            "description": "RO-Crate experiment package metadata describing all entities and relationships.",
+            "language": "eng",
+            "metadata_standard_id": {
+              "identifier": "https://w3id.org/ro/crate",
+              "type": "url"
+            }
+          }
+        ],
+        "security_and_privacy": [
+          {
+            "title": "Open access — MIT Licence",
+            "description": "Source code is publicly available under MIT Licence. No sensitive data included."
+          }
+        ]
       }
     ]
   }
