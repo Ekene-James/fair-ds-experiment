@@ -1,0 +1,22 @@
+{
+  "title": "Final machine-actionable DMP for football player market value prediction",
+  "description": "Final maDMP JSON for the Group 14 data science project.",
+  "project": "Football Player Market Value Prediction",
+  "data": [
+    {
+      "title": "Input football player datasets",
+      "type": "reused dataset",
+      "format": "xlsx, csv"
+    },
+    {
+      "title": "Generated prediction results",
+      "type": "generated dataset",
+      "format": "csv"
+    }
+  ],
+  "licence": {
+    "code": "MIT",
+    "outputs": "CC BY 4.0",
+    "metadata": "CC0 1.0"
+  }
+}
