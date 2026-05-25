@@ -1,22 +1,57 @@
 {
-  "title": "Final machine-actionable DMP for football player market value prediction",
-  "description": "Final maDMP JSON for the Group 14 data science project.",
-  "project": "Football Player Market Value Prediction",
-  "data": [
-    {
-      "title": "Input football player datasets",
-      "type": "reused dataset",
-      "format": "xlsx, csv"
+  "dmp": {
+    "title": "Predicting the Market Value of Football Players Using Various Factors",
+    "description": "Final machine-actionable Data Management Plan for the FAIR-DS Football Valuation project.",
+    "dmp_id": {
+      "identifier": "FAIR-DS-Football-Valuation"
     },
-    {
-      "title": "Generated prediction results",
-      "type": "generated dataset",
-      "format": "csv"
-    }
-  ],
-  "licence": {
-    "code": "MIT",
-    "outputs": "CC BY 4.0",
-    "metadata": "CC0 1.0"
+    "language": "en",
+    "created": "2026-05-25",
+    "modified": "2026-05-25",
+    "contact": {
+      "name": "Muhammad Athar Riaz",
+      "mbox": "bilal.hussian2332@gmail.com"
+    },
+    "contributor": [
+      {
+        "name": "Muhammad Bilal Hussain",
+        "role": "Data Manager"
+      },
+      {
+        "name": "Edeh Ekene",
+        "role": "Data Manager"
+      },
+      {
+        "name": "Muhammad Athar Riaz",
+        "role": "Data Manager"
+      }
+    ],
+    "dataset": [
+      {
+        "title": "Football Player Market Value Dataset",
+        "type": "Structured text",
+        "format": [
+          "CSV",
+          "XLSX",
+          "PKL"
+        ],
+        "description": "Dataset containing football player statistics, prediction outputs, trained machine learning models, and evaluation metrics.",
+        "personal_data": "no",
+        "sensitive_data": "no",
+        "preservation_statement": "Stored in TU Wien Research Data Repository and GitHub for minimum 10 years.",
+        "data_quality_assurance": "Validation checks, preprocessing, reproducibility testing, FAIR metadata validation.",
+        "metadata": [
+          "FAIR4ML",
+          "RO-Crate",
+          "CodeMeta",
+          "Croissant",
+          "Model Card"
+        ],
+        "license": "CC-BY-4.0",
+        "dataset_id": {
+          "identifier": "https://doi.org/10.70124/g7pw4-cd077"
+        }
+      }
+    ]
   }
 }
