@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+title: "Predicting the Market Value of Football Players Using Various Factors"
+message: "If you use this software, please cite it using these metadata."
+type: software
+version: 1.0.0
+date-released: "2026-05-25"
+license: MIT
+repository-code: "https://github.com/Ekene-James/fair-ds-experiment"
+doi: 10.5281/zenodo.20357906
+authors:
+  - family-names: Hussain
+    given-names: Muhammad Bilal
+    orcid: "https://orcid.org/0009-0000-2512-9167"
+    affiliation: TU Wien
+  - family-names: Ekene
+    given-names: Edeh
+    orcid: "https://orcid.org/0009-0007-2481-389X"
+    affiliation: TU Wien
+  - family-names: Riaz
+    given-names: Muhammad Athar
+    orcid: "https://orcid.org/0009-0004-3337-8672"
+    affiliation: TU Wien
+  - family-names: Szegedy
+    given-names: Konrad
+    orcid: "https://orcid.org/0009-0009-2299-752X"
+    affiliation: TU Wien
+references:
+  - type: dataset
+    title: "Forward football player valuation"
+    doi: 10.17632/cgc33scxg7.1
+    authors:
+      - family-names: Briseño
+        given-names: Hugo
+      - family-names: Rivera
+        given-names: José Carlos
+  - type: dataset
+    title: "Transfer Value Determinants"
+    doi: 10.17632/3btg6ptc7b.2
+    authors:
+      - family-names: Nisanov
+        given-names: Ronald

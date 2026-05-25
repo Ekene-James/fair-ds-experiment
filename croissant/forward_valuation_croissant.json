@@ -2,152 +2,167 @@
   "@context": {
     "@vocab": "https://schema.org/",
     "sc": "https://schema.org/",
-    "cr": "http://mlcommons.org/croissant/"
+    "cr": "http://mlcommons.org/croissant/",
+    "qudt": "http://qudt.org/vocab/unit/"
   },
 
   "@type": "sc:Dataset",
 
   "name": "Forward Football Player Valuation Dataset",
-
-  "description": "Dataset containing valuation, popularity, and football performance statistics for professional forward players. The dataset is used for market value prediction experiments and sports analytics workflows.",
-
+  "description": "Dataset containing valuation, popularity, and football performance statistics for 438 professional forward players. Used as input Dataset 1 in the FAIR Data Science football player market value prediction experiment. Originally published on Mendeley Data under CC BY 4.0.",
   "keywords": [
     "football",
     "soccer",
     "market value",
     "sports analytics",
     "machine learning",
-    "player valuation"
+    "player valuation",
+    "forward players"
   ],
   "datePublished": "2024",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "identifier": "https://doi.org/10.17632/cgc33scxg7.1",
+  "url": "https://data.mendeley.com/datasets/cgc33scxg7/1",
+  "version": "V1",
 
-  "license": "CC BY 4.0",
-
-  "identifier": "10.17632/cgc33scxg7.1",
-
-  "creator": {
-    "@type": "Person",
-    "name": "Hugo Briseño & José Carlos Rivera"
-  },
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "Hugo Briseño"
+    },
+    {
+      "@type": "Person",
+      "name": "José Carlos Rivera"
+    }
+  ],
   "publisher": {
     "@type": "Organization",
-    "name": "Mendeley Data"
+    "name": "Mendeley Data",
+    "url": "https://data.mendeley.com"
   },
 
-  "isBasedOn": {
-    "@type": "CreativeWork",
-    "name": "Forward football player valuation",
-    "identifier": "10.17632/cgc33scxg7.1"
-  },
-
-  "url": "https://data.mendeley.com/datasets/cgc33scxg7/1",
-
-  "distribution": {
-    "@type": "cr:FileObject",
-    "name": "Dataset soccerplayers.xlsx",
-    "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "contentUrl": "https://data.mendeley.com/datasets/cgc33scxg7/1"
-  },
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "soccerplayers-xlsx",
+      "name": "Dataset soccerplayers.xlsx",
+      "description": "Source Excel workbook containing forward player valuation data.",
+      "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "contentUrl": "https://data.mendeley.com/datasets/cgc33scxg7/1",
+      "sha256": ""
+    }
+  ],
 
   "recordSet": [
     {
       "@type": "cr:RecordSet",
-
+      "@id": "forward_player_valuation",
       "name": "forward_player_valuation",
-
-      "description": "Forward-player valuation observations and football performance metrics.",
+      "description": "Forward-player valuation observations and football performance metrics. 438 rows, one per player.",
+      "source": { "@id": "soccerplayers-xlsx" },
 
       "field": [
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/nombre",
           "name": "nombre",
           "dataType": "sc:Text",
-          "description": "Player name."
+          "description": "Player full name."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/VALUE",
           "name": "VALUE",
           "dataType": "sc:Number",
-          "unitText": "million EUR",
-          "description": "Estimated player market value."
+          "description": "Estimated player market value in millions EUR.",
+          "unitCode": "http://qudt.org/vocab/unit/MegaEuro",
+          "unitText": "million EUR"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/VALUE_R",
           "name": "VALUE_R",
           "dataType": "sc:Integer",
-          "description": "Relative player market value ranking."
+          "description": "Player market value rank within the dataset.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "rank"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/AGE",
           "name": "AGE",
-          "dataType": "sc:Number",
-          "unitText": "years",
-          "description": "Player age."
+          "dataType": "sc:Integer",
+          "description": "Player age at time of data collection.",
+          "unitCode": "http://qudt.org/vocab/unit/YR",
+          "unitText": "years"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/TEAM",
           "name": "TEAM",
           "dataType": "sc:Text",
-          "description": "Current football club."
+          "description": "Name of the player's current football club."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/EUROPA",
           "name": "EUROPA",
           "dataType": "sc:Boolean",
-          "description": "Whether the player competes in Europe."
+          "description": "Whether the player competes in a European top league. Stored as integer 1 (true) or 0 (false) in DBRepo."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/MATCHES",
           "name": "MATCHES",
           "dataType": "sc:Integer",
-          "unitText": "matches",
-          "description": "Total matches played."
+          "description": "Total matches played in the season.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "matches"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/GOALS",
           "name": "GOALS",
           "dataType": "sc:Integer",
-          "unitText": "goals",
-          "description": "Total goals scored."
+          "description": "Total goals scored.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "goals"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/ASSISTS",
           "name": "ASSISTS",
           "dataType": "sc:Integer",
-          "unitText": "assists",
-          "description": "Total assists recorded."
+          "description": "Total assists recorded.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "assists"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/MPG",
           "name": "MPG",
           "dataType": "sc:Number",
-          "unitText": "minutes",
-          "description": "Average minutes required per goal."
+          "description": "Average minutes played per goal scored.",
+          "unitCode": "http://qudt.org/vocab/unit/MIN",
+          "unitText": "minutes per goal"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/MINUTES",
           "name": "MINUTES",
-          "dataType": "sc:Number",
-          "unitText": "minutes",
-          "description": "Total minutes played."
+          "dataType": "sc:Integer",
+          "description": "Total minutes played in the season.",
+          "unitCode": "http://qudt.org/vocab/unit/MIN",
+          "unitText": "minutes"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "forward_player_valuation/INSTA",
           "name": "INSTA",
           "dataType": "sc:Number",
-          "unitText": "million followers",
-          "description": "Instagram follower count."
+          "description": "Instagram follower count in millions. 6 values are missing (player has no public account) and are stored as 0.0 in DBRepo.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "million followers"
         }
       ]
     }

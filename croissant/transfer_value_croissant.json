@@ -2,28 +2,28 @@
   "@context": {
     "@vocab": "https://schema.org/",
     "sc": "https://schema.org/",
-    "cr": "http://mlcommons.org/croissant/"
+    "cr": "http://mlcommons.org/croissant/",
+    "qudt": "http://qudt.org/vocab/unit/"
   },
 
   "@type": "sc:Dataset",
 
   "name": "Transfer Value Determinants Dataset",
-
-  "description": "Dataset containing football player transfer-market observations and performance metrics across multiple seasons. Used for transfer value prediction experiments and sports analytics workflows.",
-
+  "description": "Dataset containing 2502 football player transfer-market observations across seasons 2019-2023. Includes performance metrics, physical attributes, club context, and transfer values. Used as the primary ML training dataset (Dataset 2) in the FAIR Data Science football player market value prediction experiment. Originally published on Mendeley Data under CC BY 4.0.",
   "keywords": [
     "football",
     "soccer",
     "transfer value",
     "sports analytics",
     "machine learning",
-    "player transfers"
+    "player transfers",
+    "market value"
   ],
   "datePublished": "2025",
-
-  "license": "CC BY 4.0",
-
-  "identifier": "10.17632/3btg6ptc7b.2",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "identifier": "https://doi.org/10.17632/3btg6ptc7b.2",
+  "url": "https://data.mendeley.com/datasets/3btg6ptc7b/2",
+  "version": "V2",
 
   "creator": {
     "@type": "Person",
@@ -31,199 +31,214 @@
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Mendeley Data"
+    "name": "Mendeley Data",
+    "url": "https://data.mendeley.com"
   },
 
-  "isBasedOn": {
-    "@type": "CreativeWork",
-    "name": "Transfer Value Determinants",
-    "identifier": "10.17632/3btg6ptc7b.2"
-  },
-
-  "url": "https://data.mendeley.com/datasets/3btg6ptc7b/2",
-
-  "distribution": {
-    "@type": "cr:FileObject",
-    "name": "Nisanov_final_data.xlsx",
-    "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "contentUrl": "https://data.mendeley.com/datasets/3btg6ptc7b/2"
-  },
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "nisanov-xlsx",
+      "name": "Nisanov_final_data.xlsx",
+      "description": "Source Excel workbook with 5 sheets (one per season 2019-2023). Sheets 2020-2023 lack club_performance, relegation, and success_or_not columns.",
+      "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "contentUrl": "https://data.mendeley.com/datasets/3btg6ptc7b/2",
+      "sha256": ""
+    }
+  ],
 
   "recordSet": [
     {
       "@type": "cr:RecordSet",
-
+      "@id": "transfer_value_observation",
       "name": "transfer_value_observation",
-
-      "description": "Transfer-market observations collected across multiple football seasons.",
+      "description": "Transfer-market observations across football seasons 2019-2023. 2502 rows total. club_performance, relegation, and success_or_not are only present in the 2019 sheet (1157 NULL values for those columns in later seasons).",
+      "source": { "@id": "nisanov-xlsx" },
 
       "field": [
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/player_name",
           "name": "player_name",
           "dataType": "sc:Text",
-          "description": "Player name."
+          "description": "Player full name. One encoding-corrupted value corrected during normalisation."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/position",
           "name": "position",
           "dataType": "sc:Text",
-          "description": "Playing position."
+          "description": "Player field position (e.g. Striker, Defensive Midfield, Left Winger)."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/nationality",
           "name": "nationality",
           "dataType": "sc:Text",
           "description": "Player nationality."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/club_name",
           "name": "club_name",
           "dataType": "sc:Text",
-          "description": "Football club name."
+          "description": "Name of the player's football club during the observed season."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/season",
           "name": "season",
           "dataType": "sc:Integer",
-          "description": "Season year."
+          "description": "Season year. Values: 2019, 2020, 2021, 2022, 2023.",
+          "unitCode": "http://qudt.org/vocab/unit/YR",
+          "unitText": "year"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/age_then",
           "name": "age_then",
-          "dataType": "sc:Number",
-          "unitText": "years",
-          "description": "Player age during the observed season."
+          "dataType": "sc:Integer",
+          "description": "Player age at the start of the observed season.",
+          "unitCode": "http://qudt.org/vocab/unit/YR",
+          "unitText": "years"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/age_now",
           "name": "age_now",
-          "dataType": "sc:Number",
-          "unitText": "years",
-          "description": "Current player age."
+          "dataType": "sc:Integer",
+          "description": "Player age at time of data collection.",
+          "unitCode": "http://qudt.org/vocab/unit/YR",
+          "unitText": "years"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/club_performance",
           "name": "club_performance",
-          "dataType": "sc:Number",
-          "description": "Club performance indicator."
+          "dataType": "sc:Integer",
+          "description": "Club league performance indicator (signed integer). Only available for the 2019 season. NULL for seasons 2020-2023. Values range from -10 to 13 in the 2019 sheet."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/relegation",
           "name": "relegation",
           "dataType": "sc:Boolean",
-          "description": "Whether the club was relegated."
+          "description": "Whether the player's club was relegated that season. Only available for 2019. NULL for seasons 2020-2023. Stored as integer 1 (true) or 0 (false) in DBRepo."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/success_or_not",
           "name": "success_or_not",
-          "dataType": "sc:Boolean",
-          "description": "Whether the transfer was considered successful."
+          "dataType": "sc:Integer",
+          "description": "Transfer outcome indicator. Values: -1 (unsuccessful), 0 (neutral), 1 (successful). Only available for 2019. NULL for seasons 2020-2023."
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/total_games",
           "name": "total_games",
           "dataType": "sc:Integer",
-          "unitText": "matches",
-          "description": "Total games played."
+          "description": "Total games played in the season.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "matches"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/assists",
           "name": "assists",
           "dataType": "sc:Integer",
-          "unitText": "assists",
-          "description": "Total assists recorded."
+          "description": "Total assists recorded in the season.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "assists"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/penalty_kicks",
           "name": "penalty_kicks",
           "dataType": "sc:Integer",
-          "unitText": "penalties",
-          "description": "Penalty kicks scored."
+          "description": "Total penalty kicks taken in the season.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "penalty kicks"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/total_minutes",
           "name": "total_minutes",
-          "dataType": "sc:Number",
-          "unitText": "minutes",
-          "description": "Total minutes played."
+          "dataType": "sc:Integer",
+          "description": "Total minutes played in the season.",
+          "unitCode": "http://qudt.org/vocab/unit/MIN",
+          "unitText": "minutes"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/total_goals",
           "name": "total_goals",
           "dataType": "sc:Integer",
-          "unitText": "goals",
-          "description": "Total goals scored."
+          "description": "Total goals scored in the season.",
+          "unitCode": "http://qudt.org/vocab/unit/NUM",
+          "unitText": "goals"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/height",
           "name": "height",
           "dataType": "sc:Number",
-          "unitText": "centimeters",
-          "description": "Player height."
+          "description": "Player height.",
+          "unitCode": "http://qudt.org/vocab/unit/CentiM",
+          "unitText": "centimetres"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/start_value",
           "name": "start_value",
           "dataType": "sc:Number",
-          "unitText": "EUR",
-          "description": "Initial player market value."
+          "description": "Transfer market value at the start of the season in EUR. 17 values are missing in the source data; stored as 0.0 in DBRepo due to NOT NULL constraint.",
+          "unitCode": "http://qudt.org/vocab/unit/Euro",
+          "unitText": "EUR"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/end_value",
           "name": "end_value",
           "dataType": "sc:Number",
-          "unitText": "EUR",
-          "description": "Final player market value."
+          "description": "Transfer market value at the end of the season in EUR. 2 values are missing in the source data.",
+          "unitCode": "http://qudt.org/vocab/unit/Euro",
+          "unitText": "EUR"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/delta_value",
           "name": "delta_value",
           "dataType": "sc:Number",
-          "unitText": "EUR",
-          "description": "Difference between final and initial market value."
+          "description": "Difference between end and start transfer value (end_value minus start_value) in EUR.",
+          "unitCode": "http://qudt.org/vocab/unit/Euro",
+          "unitText": "EUR"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/value_0_mln",
           "name": "value_0_mln",
           "dataType": "sc:Number",
-          "unitText": "million EUR",
-          "description": "Initial player value in millions."
+          "description": "Transfer market value at the start of the season in millions EUR.",
+          "unitCode": "http://qudt.org/vocab/unit/MegaEuro",
+          "unitText": "million EUR"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/value_end_mln",
           "name": "value_end_mln",
           "dataType": "sc:Number",
-          "unitText": "million EUR",
-          "description": "Final player value in millions."
+          "description": "Transfer market value at the end of the season in millions EUR. TARGET VARIABLE for ML prediction.",
+          "unitCode": "http://qudt.org/vocab/unit/MegaEuro",
+          "unitText": "million EUR"
         },
-
         {
           "@type": "cr:Field",
+          "@id": "transfer_value_observation/value_delta_mln",
           "name": "value_delta_mln",
           "dataType": "sc:Number",
-          "unitText": "million EUR",
-          "description": "Difference between final and initial player value in millions."
+          "description": "Difference between end and start transfer value in millions EUR.",
+          "unitCode": "http://qudt.org/vocab/unit/MegaEuro",
+          "unitText": "million EUR"
         }
       ]
     }

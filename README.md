@@ -367,7 +367,7 @@ Trained models, predictions, evaluation metrics, and figures are shared under **
 | Code repository (Zenodo) | Zenodo        | https://doi.org/10.5281/zenodo.20357906                                        |
 | Trained model            | TUWRD (test)  | https://doi.org/10.70124/c35xx-9pb93                                           |
 | Generated output data    | TUWRD (test)  | https://doi.org/10.5281/zenodo.20377147_                                       |
-| DMP record               | TUWRD (test)  | _(add DOI after A completes T4.4)_                                             |
+| DMP record               | TUWRD (test)  | https://doi.org/10.70124/21cgp-a9396_                                          |
 | DBRepo database          | DBRepo (test) | https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e |
 | Dataset 1                | Mendeley Data | https://doi.org/10.17632/cgc33scxg7.1                                          |
 | Dataset 2                | Mendeley Data | https://doi.org/10.17632/3btg6ptc7b.2                                          |

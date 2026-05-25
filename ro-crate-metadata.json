@@ -4,18 +4,20 @@
     {
       "@id": "ro-crate-metadata.json",
       "@type": "CreativeWork",
-      "about": { "@id": "./" },
-      "conformsTo": { "@id": "https://w3id.org/ro/crate/1.1" },
+      "about": {
+        "@id": "./"
+      },
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      },
       "dateCreated": "2026-05-25",
       "description": "RO-Crate metadata for the FAIR Data Science football player market value prediction experiment."
     },
-
     {
       "@id": "https://w3id.org/ro/crate/1.1",
       "@type": "CreativeWork",
       "name": "RO-Crate Metadata Specification 1.1"
     },
-
     {
       "@id": "./",
       "@type": "Dataset",
@@ -23,20 +25,40 @@
       "description": "Complete experiment package for a FAIR Data Science course project predicting football player end-of-season transfer market value using XGBoost regression. Includes 3NF relational schema in DBRepo, normalisation and upload notebooks, view creation, ML model training (local and API versions), FAIR4ML metadata, Croissant metadata, CodeMeta, Model Card, and all generated outputs. Data is retrieved exclusively from the DBRepo REST API in the reimplemented pipeline (T2.6).",
       "datePublished": "2026-05-25",
       "license": [
-        { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-        { "@id": "https://opensource.org/licenses/MIT" }
+        {
+          "@id": "https://creativecommons.org/licenses/by/4.0/"
+        },
+        {
+          "@id": "https://opensource.org/licenses/MIT"
+        }
       ],
       "creator": [
-        { "@id": "#konrad-szegedy" },
-        { "@id": "#muhammad-athar-riaz" },
-        { "@id": "#muhammad-bilal-hussain" },
-        { "@id": "#edeh-ekene" }
+        {
+          "@id": "#konrad-szegedy"
+        },
+        {
+          "@id": "#muhammad-athar-riaz"
+        },
+        {
+          "@id": "#muhammad-bilal-hussain"
+        },
+        {
+          "@id": "#edeh-ekene"
+        }
       ],
       "author": [
-        { "@id": "#konrad-szegedy" },
-        { "@id": "#muhammad-athar-riaz" },
-        { "@id": "#muhammad-bilal-hussain" },
-        { "@id": "#edeh-ekene" }
+        {
+          "@id": "#konrad-szegedy"
+        },
+        {
+          "@id": "#muhammad-athar-riaz"
+        },
+        {
+          "@id": "#muhammad-bilal-hussain"
+        },
+        {
+          "@id": "#edeh-ekene"
+        }
       ],
       "keywords": [
         "football",
@@ -54,45 +76,114 @@
       ],
       "codeRepository": "https://github.com/Ekene-James/fair-ds-experiment",
       "sameAs": [
-        { "@id": "https://doi.org/10.5281/zenodo.20357906" },
+        {
+          "@id": "https://doi.org/10.5281/zenodo.20357906"
+        },
         {
           "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e"
         }
       ],
       "citation": [
-        { "@id": "https://doi.org/10.17632/cgc33scxg7.1" },
-        { "@id": "https://doi.org/10.17632/3btg6ptc7b.2" }
+        {
+          "@id": "https://doi.org/10.17632/cgc33scxg7.1"
+        },
+        {
+          "@id": "https://doi.org/10.17632/3btg6ptc7b.2"
+        }
       ],
       "hasPart": [
-        { "@id": "https://doi.org/10.17632/cgc33scxg7.1" },
-        { "@id": "https://doi.org/10.17632/3btg6ptc7b.2" },
-        { "@id": "dbrepo/schema.sql" },
-        { "@id": "dbrepo/er_diagram.png" },
-        { "@id": "notebooks/dbrepo_create_tables.ipynb" },
-        { "@id": "notebooks/dbrepo_normalize_clean_export.ipynb" },
-        { "@id": "notebooks/T2_4_create_views.ipynb" },
-        { "@id": "notebooks/Project.ipynb" },
-        { "@id": "notebooks/Project_api.ipynb" },
-        { "@id": "fair4ml-metadata.json" },
-        { "@id": "codemeta.json" },
-        { "@id": "CITATION.cff" },
-        { "@id": "croissant/forward_valuation_croissant.json" },
-        { "@id": "croissant/transfer_value_croissant.json" },
-        { "@id": "docs/model-card.md" },
-        { "@id": "notebooks/models/final_model.pkl" },
-        { "@id": "notebooks/models/final_model_api.pkl" },
-        { "@id": "notebooks/outputs/predictions.csv" },
-        { "@id": "notebooks/outputs/predictions_api.csv" },
-        { "@id": "notebooks/outputs/evaluation_metrics.csv" },
-        { "@id": "notebooks/outputs/evaluation_metrics_api.csv" },
-        { "@id": "notebooks/outputs/transfer_data_from_api.csv" },
-        { "@id": "https://doi.org/10.70124/g7pw4-cd077" },
-        { "@id": "https://doi.org/10.5281/zenodo.20377147" },
-        { "@id": "https://doi.org/10.70124/21cgp-a9396" },
-        { "@id": "docs/validation/ro-crate-validator-output.txt" }
+        {
+          "@id": "https://doi.org/10.17632/cgc33scxg7.1"
+        },
+        {
+          "@id": "https://doi.org/10.17632/3btg6ptc7b.2"
+        },
+        {
+          "@id": "dbrepo/schema.sql"
+        },
+        {
+          "@id": "dbrepo/er_diagram.png"
+        },
+        {
+          "@id": "notebooks/dbrepo_create_tables.ipynb"
+        },
+        {
+          "@id": "notebooks/dbrepo_normalize_clean_export.ipynb"
+        },
+        {
+          "@id": "notebooks/T2_4_create_views.ipynb"
+        },
+        {
+          "@id": "notebooks/Project.ipynb"
+        },
+        {
+          "@id": "notebooks/Project_api.ipynb"
+        },
+        {
+          "@id": "fair4ml-metadata.json"
+        },
+        {
+          "@id": "codemeta.json"
+        },
+        {
+          "@id": "CITATION.cff"
+        },
+        {
+          "@id": "croissant/forward_valuation_croissant.json"
+        },
+        {
+          "@id": "croissant/transfer_value_croissant.json"
+        },
+        {
+          "@id": "docs/model-card.md"
+        },
+        {
+          "@id": "notebooks/models/final_model.pkl"
+        },
+        {
+          "@id": "notebooks/models/final_model_api.pkl"
+        },
+        {
+          "@id": "notebooks/outputs/predictions.csv"
+        },
+        {
+          "@id": "notebooks/outputs/predictions_api.csv"
+        },
+        {
+          "@id": "notebooks/outputs/evaluation_metrics.csv"
+        },
+        {
+          "@id": "notebooks/outputs/evaluation_metrics_api.csv"
+        },
+        {
+          "@id": "notebooks/outputs/transfer_data_from_api.csv"
+        },
+        {
+          "@id": "https://doi.org/10.70124/g7pw4-cd077"
+        },
+        {
+          "@id": "https://doi.org/10.5281/zenodo.20377147"
+        },
+        {
+          "@id": "https://doi.org/10.70124/21cgp-a9396"
+        },
+        {
+          "@id": "docs/validation/ro-crate-validator-output.txt"
+        },
+        {
+          "@id": "data/soccerplayers.xlsx"
+        },
+        {
+          "@id": "data/Nisanov_final_data.xlsx"
+        },
+        {
+          "@id": "https://doi.org/10.5281/zenodo.20357906"
+        },
+        {
+          "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e"
+        }
       ]
     },
-
     {
       "@id": "https://creativecommons.org/licenses/by/4.0/",
       "@type": "CreativeWork",
@@ -103,14 +194,15 @@
       "@type": "CreativeWork",
       "name": "MIT License"
     },
-
     {
       "@id": "#konrad-szegedy",
       "@type": "Person",
       "name": "Konrad Szegedy",
       "email": "e12024699@student.tuwien.ac.at",
       "identifier": "https://orcid.org/0009-0009-2299-752X",
-      "affiliation": { "@id": "https://ror.org/04d836q62" }
+      "affiliation": {
+        "@id": "https://ror.org/04d836q62"
+      }
     },
     {
       "@id": "#muhammad-athar-riaz",
@@ -118,7 +210,9 @@
       "name": "Muhammad Athar Riaz",
       "email": "bilal.hussian2332@gmail.com",
       "identifier": "https://orcid.org/0009-0004-3337-8672",
-      "affiliation": { "@id": "https://ror.org/04d836q62" }
+      "affiliation": {
+        "@id": "https://ror.org/04d836q62"
+      }
     },
     {
       "@id": "#muhammad-bilal-hussain",
@@ -126,7 +220,9 @@
       "name": "Muhammad Bilal Hussain",
       "email": "bilal.hussain3223@gmail.com",
       "identifier": "https://orcid.org/0009-0000-2512-9167",
-      "affiliation": { "@id": "https://ror.org/04d836q62" }
+      "affiliation": {
+        "@id": "https://ror.org/04d836q62"
+      }
     },
     {
       "@id": "#edeh-ekene",
@@ -134,14 +230,15 @@
       "name": "Edeh Ekene",
       "email": "edehjamesraphael@gmail.com",
       "identifier": "https://orcid.org/0009-0007-2481-389X",
-      "affiliation": { "@id": "https://ror.org/04d836q62" }
+      "affiliation": {
+        "@id": "https://ror.org/04d836q62"
+      }
     },
     {
       "@id": "https://ror.org/04d836q62",
       "@type": "Organization",
       "name": "TU Wien"
     },
-
     {
       "@id": "#hugo-briseno",
       "@type": "Person",
@@ -163,58 +260,85 @@
       "name": "Mendeley Data",
       "url": "https://data.mendeley.com"
     },
-
     {
       "@id": "https://doi.org/10.17632/cgc33scxg7.1",
       "@type": "Dataset",
       "name": "Forward football player valuation",
       "description": "438 forward player observations with age, club, market value, matches played, goals, assists, minutes played, Instagram followers, and European league participation. CC BY 4.0.",
-      "creator": [{ "@id": "#hugo-briseno" }, { "@id": "#jose-carlos-rivera" }],
-      "publisher": { "@id": "#mendeley-data" },
+      "creator": [
+        {
+          "@id": "#hugo-briseno"
+        },
+        {
+          "@id": "#jose-carlos-rivera"
+        }
+      ],
+      "publisher": {
+        "@id": "#mendeley-data"
+      },
       "version": "V1",
       "identifier": "https://doi.org/10.17632/cgc33scxg7.1",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "distribution": { "@id": "data/raw/soccerplayers.xlsx" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "distribution": {
+        "@id": "data/soccerplayers.xlsx"
+      }
     },
     {
       "@id": "https://doi.org/10.17632/3btg6ptc7b.2",
       "@type": "Dataset",
       "name": "Transfer Value Determinants",
       "description": "2502 player-season observations across 2019-2023 with transfer values, performance metrics, position, nationality, club, age, and height. Primary ML training dataset. CC BY 4.0.",
-      "creator": { "@id": "#ronald-nisanov" },
-      "publisher": { "@id": "#mendeley-data" },
+      "creator": {
+        "@id": "#ronald-nisanov"
+      },
+      "publisher": {
+        "@id": "#mendeley-data"
+      },
       "version": "V2",
       "identifier": "https://doi.org/10.17632/3btg6ptc7b.2",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "distribution": { "@id": "data/raw/Nisanov_final_data.xlsx" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "distribution": {
+        "@id": "data/Nisanov_final_data.xlsx"
+      }
     },
-
     {
-      "@id": "data/raw/soccerplayers.xlsx",
+      "@id": "data/soccerplayers.xlsx",
       "@type": "File",
       "name": "Forward football player valuation source workbook",
       "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "isBasedOn": { "@id": "https://doi.org/10.17632/cgc33scxg7.1" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "isBasedOn": {
+        "@id": "https://doi.org/10.17632/cgc33scxg7.1"
+      }
     },
     {
-      "@id": "data/raw/Nisanov_final_data.xlsx",
+      "@id": "data/Nisanov_final_data.xlsx",
       "@type": "File",
       "name": "Transfer Value Determinants source workbook",
       "encodingFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "isBasedOn": { "@id": "https://doi.org/10.17632/3btg6ptc7b.2" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "isBasedOn": {
+        "@id": "https://doi.org/10.17632/3btg6ptc7b.2"
+      }
     },
-
     {
       "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e",
       "@type": "DataCatalog",
       "name": "Football Player Market Value — DBRepo Database",
       "description": "3NF relational database storing the normalised input data. Contains 8 tables: source_dataset, player, club, position, nationality, season, forward_player_valuation, transfer_value_observation. Exposes 7 views for the ML pipeline. Accessible via DBRepo REST API.",
       "url": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
-
     {
       "@id": "dbrepo/schema.sql",
       "@type": ["File", "SoftwareSourceCode"],
@@ -225,7 +349,9 @@
       "about": {
         "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e"
       },
-      "license": { "@id": "https://opensource.org/licenses/MIT" }
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      }
     },
     {
       "@id": "dbrepo/er_diagram.png",
@@ -233,10 +359,13 @@
       "name": "Entity-relationship diagram",
       "description": "ER diagram showing all 8 tables and their foreign key relationships.",
       "encodingFormat": "image/png",
-      "about": { "@id": "dbrepo/schema.sql" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "about": {
+        "@id": "dbrepo/schema.sql"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
-
     {
       "@id": "notebooks/dbrepo_create_tables.ipynb",
       "@type": ["File", "SoftwareSourceCode"],
@@ -247,7 +376,9 @@
       "about": {
         "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e"
       },
-      "license": { "@id": "https://opensource.org/licenses/MIT" }
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      }
     },
     {
       "@id": "notebooks/dbrepo_normalize_clean_export.ipynb",
@@ -257,10 +388,16 @@
       "encodingFormat": "application/x-ipynb+json",
       "programmingLanguage": "Python",
       "input": [
-        { "@id": "data/raw/soccerplayers.xlsx" },
-        { "@id": "data/raw/Nisanov_final_data.xlsx" }
+        {
+          "@id": "data/raw/soccerplayers.xlsx"
+        },
+        {
+          "@id": "data/raw/Nisanov_final_data.xlsx"
+        }
       ],
-      "license": { "@id": "https://opensource.org/licenses/MIT" }
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      }
     },
     {
       "@id": "notebooks/T2_4_create_views.ipynb",
@@ -272,7 +409,9 @@
       "about": {
         "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e"
       },
-      "license": { "@id": "https://opensource.org/licenses/MIT" }
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      }
     },
     {
       "@id": "notebooks/Project.ipynb",
@@ -282,15 +421,27 @@
       "encodingFormat": "application/x-ipynb+json",
       "programmingLanguage": "Python",
       "input": [
-        { "@id": "data/raw/soccerplayers.xlsx" },
-        { "@id": "data/raw/Nisanov_final_data.xlsx" }
+        {
+          "@id": "data/raw/soccerplayers.xlsx"
+        },
+        {
+          "@id": "data/raw/Nisanov_final_data.xlsx"
+        }
       ],
       "output": [
-        { "@id": "notebooks/models/final_model.pkl" },
-        { "@id": "notebooks/outputs/predictions.csv" },
-        { "@id": "notebooks/outputs/evaluation_metrics.csv" }
+        {
+          "@id": "notebooks/models/final_model.pkl"
+        },
+        {
+          "@id": "notebooks/outputs/predictions.csv"
+        },
+        {
+          "@id": "notebooks/outputs/evaluation_metrics.csv"
+        }
       ],
-      "license": { "@id": "https://opensource.org/licenses/MIT" }
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      }
     },
     {
       "@id": "notebooks/Project_api.ipynb",
@@ -305,15 +456,26 @@
         }
       ],
       "output": [
-        { "@id": "notebooks/models/final_model_api.pkl" },
-        { "@id": "notebooks/outputs/predictions_api.csv" },
-        { "@id": "notebooks/outputs/evaluation_metrics_api.csv" },
-        { "@id": "notebooks/outputs/transfer_data_from_api.csv" }
+        {
+          "@id": "notebooks/models/final_model_api.pkl"
+        },
+        {
+          "@id": "notebooks/outputs/predictions_api.csv"
+        },
+        {
+          "@id": "notebooks/outputs/evaluation_metrics_api.csv"
+        },
+        {
+          "@id": "notebooks/outputs/transfer_data_from_api.csv"
+        }
       ],
-      "isBasedOn": { "@id": "notebooks/Project.ipynb" },
-      "license": { "@id": "https://opensource.org/licenses/MIT" }
+      "isBasedOn": {
+        "@id": "notebooks/Project.ipynb"
+      },
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      }
     },
-
     {
       "@id": "fair4ml-metadata.json",
       "@type": ["File", "CreativeWork"],
@@ -321,10 +483,16 @@
       "description": "FAIR4ML-compliant metadata for the trained XGBoost model. Documents algorithm (xgboost 3.2.0), all hyperparameters, training dataset DOIs, evaluation metrics for both local and API versions, features used, preprocessing strategy, train/test split, intended use, and known limitations.",
       "encodingFormat": "application/json",
       "about": [
-        { "@id": "notebooks/models/final_model.pkl" },
-        { "@id": "notebooks/models/final_model_api.pkl" }
+        {
+          "@id": "notebooks/models/final_model.pkl"
+        },
+        {
+          "@id": "notebooks/models/final_model_api.pkl"
+        }
       ],
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
     {
       "@id": "codemeta.json",
@@ -332,7 +500,9 @@
       "name": "CodeMeta 2.0 software metadata",
       "description": "CodeMeta 2.0 metadata file documenting name, version, authors with ORCIDs, licence (SPDX: MIT), programming language, runtime requirements, and all dependencies with version pins.",
       "encodingFormat": "application/json",
-      "license": { "@id": "https://opensource.org/licenses/MIT" }
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      }
     },
     {
       "@id": "CITATION.cff",
@@ -340,18 +510,25 @@
       "name": "Citation file",
       "description": "CFF citation file referencing the Zenodo DOI for the experiment code archive.",
       "encodingFormat": "text/yaml",
-      "about": { "@id": "https://doi.org/10.5281/zenodo.20357906" },
-      "license": { "@id": "https://opensource.org/licenses/MIT" }
+      "about": {
+        "@id": "https://doi.org/10.5281/zenodo.20357906"
+      },
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      }
     },
-
     {
       "@id": "croissant/forward_valuation_croissant.json",
       "@type": ["File", "CreativeWork"],
       "name": "Croissant metadata — Forward Football Player Valuation (Dataset 1)",
       "description": "Croissant JSON-LD metadata record describing fields, data types, units (QUDT URIs), distribution information, and licence for Dataset 1.",
       "encodingFormat": "application/ld+json",
-      "about": { "@id": "https://doi.org/10.17632/cgc33scxg7.1" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "about": {
+        "@id": "https://doi.org/10.17632/cgc33scxg7.1"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
     {
       "@id": "croissant/transfer_value_croissant.json",
@@ -359,10 +536,13 @@
       "name": "Croissant metadata — Transfer Value Determinants (Dataset 2)",
       "description": "Croissant JSON-LD metadata record describing fields, data types, units (QUDT URIs), distribution information, and licence for Dataset 2.",
       "encodingFormat": "application/ld+json",
-      "about": { "@id": "https://doi.org/10.17632/3btg6ptc7b.2" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "about": {
+        "@id": "https://doi.org/10.17632/3btg6ptc7b.2"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
-
     {
       "@id": "docs/model-card.md",
       "@type": ["File", "CreativeWork"],
@@ -370,24 +550,37 @@
       "description": "Model Card for the trained XGBoost regressor. Sections: model description, intended use, out-of-scope uses, training data with DOI, evaluation results with metrics table (R², RMSE, MAE), limitations, ethical considerations, and licence.",
       "encodingFormat": "text/markdown",
       "about": [
-        { "@id": "notebooks/models/final_model.pkl" },
-        { "@id": "notebooks/models/final_model_api.pkl" }
+        {
+          "@id": "notebooks/models/final_model.pkl"
+        },
+        {
+          "@id": "notebooks/models/final_model_api.pkl"
+        }
       ],
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
-
     {
       "@id": "notebooks/models/final_model.pkl",
       "@type": ["File", "SoftwareApplication"],
       "name": "Trained XGBoost model — local file version",
       "description": "Serialised sklearn Pipeline containing SimpleImputer, OneHotEncoder, and XGBRegressor. Trained on Transfer Value Determinants dataset (seasons 2019-2023). Hyperparameters: n_estimators=20, max_depth=3, learning_rate=0.1, subsample=0.8, colsample_bytree=0.8. R²=0.8702.",
       "encodingFormat": "application/octet-stream",
-      "sameAs": { "@id": "https://doi.org/10.70124/g7pw4-cd077" },
+      "sameAs": {
+        "@id": "https://doi.org/10.70124/g7pw4-cd077"
+      },
       "isBasedOn": [
-        { "@id": "https://doi.org/10.17632/3btg6ptc7b.2" },
-        { "@id": "https://doi.org/10.17632/cgc33scxg7.1" }
+        {
+          "@id": "https://doi.org/10.17632/3btg6ptc7b.2"
+        },
+        {
+          "@id": "https://doi.org/10.17632/cgc33scxg7.1"
+        }
       ],
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
     {
       "@id": "notebooks/models/final_model_api.pkl",
@@ -395,39 +588,59 @@
       "name": "Trained XGBoost model — DBRepo API version",
       "description": "Serialised sklearn Pipeline trained identically to final_model.pkl but using data loaded exclusively from the DBRepo REST API. R²=0.8689. Difference from local version due to DECIMAL(12,3) storage rounding and 17 NULL rows stored as 0.0.",
       "encodingFormat": "application/octet-stream",
-      "sameAs": { "@id": "https://doi.org/10.70124/g7pw4-cd077" },
+      "sameAs": {
+        "@id": "https://doi.org/10.70124/g7pw4-cd077"
+      },
       "isBasedOn": [
         {
           "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e"
         }
       ],
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
-
     {
       "@id": "https://doi.org/10.70124/g7pw4-cd077",
       "@type": "Dataset",
       "name": "Trained XGBoost Model — Football Player Market Value Prediction (TUWRD deposit)",
       "description": "TUWRD deposit containing trained model artefacts (final_model.pkl, final_model_api.pkl) and FAIR4ML metadata. Resource type: Model.",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
-      "publisher": { "@id": "https://ror.org/04d836q62" },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "publisher": {
+        "@id": "https://ror.org/04d836q62"
+      },
       "creator": [
-        { "@id": "#konrad-szegedy" },
-        { "@id": "#muhammad-athar-riaz" },
-        { "@id": "#muhammad-bilal-hussain" },
-        { "@id": "#edeh-ekene" }
+        {
+          "@id": "#konrad-szegedy"
+        },
+        {
+          "@id": "#muhammad-athar-riaz"
+        },
+        {
+          "@id": "#muhammad-bilal-hussain"
+        },
+        {
+          "@id": "#edeh-ekene"
+        }
       ]
     },
-
     {
       "@id": "notebooks/outputs/predictions.csv",
       "@type": "File",
       "name": "Model predictions — local file version",
       "description": "Per-player test set predictions from the local-file experiment. Columns: player_name, actual_value_end_mln, predicted_value_end_mln, residual_value_end_mln.",
       "encodingFormat": "text/csv",
-      "sameAs": { "@id": "https://doi.org/10.5281/zenodo.20377147" },
-      "isBasedOn": { "@id": "notebooks/models/final_model.pkl" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "sameAs": {
+        "@id": "https://doi.org/10.5281/zenodo.20377147"
+      },
+      "isBasedOn": {
+        "@id": "notebooks/models/final_model.pkl"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
     {
       "@id": "notebooks/outputs/predictions_api.csv",
@@ -435,9 +648,15 @@
       "name": "Model predictions — DBRepo API version",
       "description": "Per-player test set predictions from the API reimplementation experiment.",
       "encodingFormat": "text/csv",
-      "sameAs": { "@id": "https://doi.org/10.5281/zenodo.20377147" },
-      "isBasedOn": { "@id": "notebooks/models/final_model_api.pkl" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "sameAs": {
+        "@id": "https://doi.org/10.5281/zenodo.20377147"
+      },
+      "isBasedOn": {
+        "@id": "notebooks/models/final_model_api.pkl"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
     {
       "@id": "notebooks/outputs/evaluation_metrics.csv",
@@ -445,9 +664,15 @@
       "name": "Evaluation metrics — local file version",
       "description": "R², MSE, RMSE, MAE for the local-file experiment. Values: R²=0.8702, RMSE=8.0957, MAE=5.5635.",
       "encodingFormat": "text/csv",
-      "sameAs": { "@id": "https://doi.org/10.5281/zenodo.20377147" },
-      "isBasedOn": { "@id": "notebooks/models/final_model.pkl" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "sameAs": {
+        "@id": "https://doi.org/10.5281/zenodo.20377147"
+      },
+      "isBasedOn": {
+        "@id": "notebooks/models/final_model.pkl"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
     {
       "@id": "notebooks/outputs/evaluation_metrics_api.csv",
@@ -455,9 +680,15 @@
       "name": "Evaluation metrics — DBRepo API version",
       "description": "R², MSE, RMSE, MAE for the API reimplementation. Values: R²=0.8689, RMSE=8.6637, MAE=5.7851.",
       "encodingFormat": "text/csv",
-      "sameAs": { "@id": "https://doi.org/10.5281/zenodo.20377147" },
-      "isBasedOn": { "@id": "notebooks/models/final_model_api.pkl" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "sameAs": {
+        "@id": "https://doi.org/10.5281/zenodo.20377147"
+      },
+      "isBasedOn": {
+        "@id": "notebooks/models/final_model_api.pkl"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
     {
       "@id": "notebooks/outputs/transfer_data_from_api.csv",
@@ -468,59 +699,91 @@
       "isBasedOn": {
         "@id": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e"
       },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
-
     {
       "@id": "https://doi.org/10.5281/zenodo.20377147",
       "@type": "Dataset",
       "name": "Generated Output Data — Football Player Market Value Predictions (Zenodo deposit)",
       "description": "Zenodo deposit containing generated output data: predictions, evaluation metrics, and API audit trail from the football player market value prediction experiment.",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
       "creator": [
-        { "@id": "#konrad-szegedy" },
-        { "@id": "#muhammad-athar-riaz" },
-        { "@id": "#muhammad-bilal-hussain" },
-        { "@id": "#edeh-ekene" }
+        {
+          "@id": "#konrad-szegedy"
+        },
+        {
+          "@id": "#muhammad-athar-riaz"
+        },
+        {
+          "@id": "#muhammad-bilal-hussain"
+        },
+        {
+          "@id": "#edeh-ekene"
+        }
       ]
     },
-
     {
       "@id": "https://doi.org/10.70124/21cgp-a9396",
       "@type": ["Dataset", "CreativeWork"],
       "name": "DMP-FINAL: Predicting the Market Value of Football Players Using Various Factors",
       "description": "Final Data Management Plan deposit on TUWRD. Contains the finalised DMP as PDF/A and the maDMP as JSON following the RDA DMP Common Standard schema.",
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
       "creator": [
-        { "@id": "#konrad-szegedy" },
-        { "@id": "#muhammad-athar-riaz" },
-        { "@id": "#muhammad-bilal-hussain" },
-        { "@id": "#edeh-ekene" }
+        {
+          "@id": "#konrad-szegedy"
+        },
+        {
+          "@id": "#muhammad-athar-riaz"
+        },
+        {
+          "@id": "#muhammad-bilal-hussain"
+        },
+        {
+          "@id": "#edeh-ekene"
+        }
       ]
     },
-
     {
       "@id": "https://doi.org/10.5281/zenodo.20357906",
       "@type": ["Dataset", "SoftwareSourceCode"],
       "name": "Experiment Source Code — Zenodo Archive",
       "description": "Zenodo archive of the GitHub repository via GitHub-Zenodo integration. Contains all notebooks, metadata files, schema, and documentation.",
-      "license": { "@id": "https://opensource.org/licenses/MIT" },
+      "license": {
+        "@id": "https://opensource.org/licenses/MIT"
+      },
       "creator": [
-        { "@id": "#konrad-szegedy" },
-        { "@id": "#muhammad-athar-riaz" },
-        { "@id": "#muhammad-bilal-hussain" },
-        { "@id": "#edeh-ekene" }
+        {
+          "@id": "#konrad-szegedy"
+        },
+        {
+          "@id": "#muhammad-athar-riaz"
+        },
+        {
+          "@id": "#muhammad-bilal-hussain"
+        },
+        {
+          "@id": "#edeh-ekene"
+        }
       ]
     },
-
     {
       "@id": "docs/validation/ro-crate-validator-output.txt",
       "@type": "File",
       "name": "RO-Crate validator output",
       "description": "Output from ro-crate-validator confirming this RO-Crate passes validation against the RO-Crate 1.1 specification.",
       "encodingFormat": "text/plain",
-      "about": { "@id": "ro-crate-metadata.json" },
-      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" }
+      "about": {
+        "@id": "ro-crate-metadata.json"
+      },
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
     }
   ]
 }
