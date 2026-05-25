@@ -366,7 +366,7 @@ Trained models, predictions, evaluation metrics, and figures are shared under **
 | ------------------------ | ------------- | ------------------------------------------------------------------------------ |
 | Code repository (Zenodo) | Zenodo        | https://doi.org/10.5281/zenodo.20357906                                        |
 | Trained model            | TUWRD (test)  | https://doi.org/10.70124/c35xx-9pb93                                           |
-| Generated output data    | TUWRD (test)  | _(add DOI after B completes T3.10)_                                            |
+| Generated output data    | TUWRD (test)  | https://doi.org/10.5281/zenodo.20377147_                                       |
 | DMP record               | TUWRD (test)  | _(add DOI after A completes T4.4)_                                             |
 | DBRepo database          | DBRepo (test) | https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e |
 | Dataset 1                | Mendeley Data | https://doi.org/10.17632/cgc33scxg7.1                                          |
@@ -376,12 +376,12 @@ Trained models, predictions, evaluation metrics, and figures are shared under **
 
 ## Contributors
 
-| Role | Name                   | Student ID | ORCID                                 |
-| ---- | ---------------------- | ---------- | ------------------------------------- |
-| A    | Konrad Szegedy         | 12024699   | https://orcid.org/0009-0009-2299-752X |
-| B    | Muhammad Athar Riaz    | 12449141   | _(not available)_                     |
-| C    | Muhammad Bilal Hussain | 12442081   | https://orcid.org/0009-0000-2512-9167 |
-| D    | Edeh Ekene             | 12451120   | https://orcid.org/0009-0007-2481-389X |
+| Role | Name                                      | Student ID | ORCID                                 |
+| ---- | ----------------------------------------- | ---------- | ------------------------------------- |
+| A    | Konrad Szegedy (Dropped the course later) | 12024699   | https://orcid.org/0009-0009-2299-752X |
+| B    | Muhammad Athar Riaz                       | 12449141   | https://orcid.org/0009-0004-3337-8672 |
+| C    | Muhammad Bilal Hussain                    | 12442081   | https://orcid.org/0009-0000-2512-9167 |
+| D    | Edeh Ekene                                | 12451120   | https://orcid.org/0009-0007-2481-389X |
 
 ---
 
