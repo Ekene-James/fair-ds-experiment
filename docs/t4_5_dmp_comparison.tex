@@ -1,0 +1,127 @@
+\section*{T4.5 — DMP Comparison: Initial vs Final}
+
+\noindent\textbf{Initial DMP (Part 2):} \textit{[https://doi.org/10.70124/nf9qd-q7b67]}\\
+\textbf{Final DMP:} \url{https://doi.org/10.70124/21cgp-a9396}
+
+\bigskip
+
+\subsection*{Question 1 — What did the initial DMP promise that turned out to be unrealistic?}
+
+\subsubsection*{DBRepo as a straightforward programmatic data layer}
+
+The initial DMP described the experiment's data infrastructure as a clean API-driven
+workflow where the schema would be created and data loaded via the DBRepo REST API
+using the Python SDK. In practice, the SDK (\texttt{dbrepo==1.13.3}) was severely
+misaligned with the test server. The \texttt{create\_table(dataframe=...)} method
+mapped \texttt{int64} columns to \texttt{BOOLEAN} type because it inferred types from
+Python values rather than numpy dtypes --- meaning a seed value of \texttt{0} was
+interpreted as \texttt{False}. The \texttt{pd.StringDtype()} extension type was not
+recognised at all, defaulting silently to \texttt{text}. The \texttt{primary\_key}
+parameter did not exist on \texttt{CreateTableColumn}. Foreign key constraints declared
+in \texttt{schema.sql} could not be enforced through the SDK. None of these limitations
+are discoverable without attempting the actual implementation --- an initial DMP written
+before touching the tools could not have anticipated them.
+
+\subsubsection*{Exact reproducibility of the API reimplementation}
+
+The initial DMP would have described the API reimplementation as producing identical
+results to the original local-file version, as T2.6 requires. This proved unreachable.
+The DBRepo database stored \texttt{value\_start\_mln} as \texttt{DECIMAL(12,3)},
+introducing rounding at the third decimal place. Additionally, 17 rows with unknown
+\texttt{start\_value\_eur} could not be stored as NULL because the column was created
+as NOT NULL during table setup --- they were stored as \texttt{0.0} instead. These 17
+rows were handled by \texttt{SimpleImputer(strategy=`median')} in the original (filling
+NaN with the median) but treated as genuine zero-value observations in the API version,
+shifting model predictions. The final RMSE differed by 7\% (8.0957 vs.\ 8.6637) and
+MAE by 4\% (5.5635 vs.\ 5.7851). Results were considered equivalent within an 8\%
+tolerance, but claiming identical results in the initial DMP was never achievable given
+how database storage interacts with ML preprocessing.
+
+\subsubsection*{Schema creation as a simple scripted step}
+
+The initial DMP described schema creation as a one-time programmatic step. In practice,
+tables had to be deleted and recreated multiple times --- using DataFrames with various
+dtype strategies, using \texttt{CreateTableColumn} with explicit \texttt{ColumnType}
+values, and ultimately using the DBRepo UI for tables the SDK could not create
+correctly. The \texttt{season} table, whose rows are pre-inserted by the schema SQL,
+was incorrectly included in upload pipelines causing PRIMARY KEY duplicate errors. The
+fact that DBRepo's \texttt{get\_tables()} returns lightweight \texttt{TableBrief}
+objects with no column metadata --- requiring a separate \texttt{get\_table()} call per
+table --- meant that any notebook assuming table metadata was immediately accessible
+after listing would fail.
+
+\bigskip
+
+\subsection*{Question 2 — What did writing the final DMP actually require that the initial one glossed over?}
+
+\subsubsection*{View architecture as an engineering decision}
+
+The initial DMP would have stated that views would expose query-ready feature tables for
+the ML pipeline. The final version required a specific architectural decision that could
+not have been anticipated: DBRepo's SDK mapper internally calls \texttt{numpy.array()}
+on each joined table's column list. When joined tables have different numbers of
+columns, the array becomes inhomogeneous and raises a \texttt{ValueError}. This meant
+JOIN-based views --- the natural implementation --- were impossible through the SDK. The
+working solution was to create single-table views without joins and reconstruct the
+denormalised dataset locally in pandas after retrieving each view via the REST API. This
+decision had downstream consequences: lookup views (\texttt{vw\_player\_lookup},
+\texttt{vw\_club\_lookup}, etc.) returned HTTP 500 errors when the underlying tables
+were empty, requiring lookup data to be fetched via \texttt{get\_table\_data()} instead
+of the view API. None of this appears in any initial DMP --- it represents knowledge
+gained exclusively through implementation.
+
+\subsubsection*{Column type precision in database storage}
+
+The final DMP documents specific storage decisions that the initial version could not
+have specified. \texttt{DECIMAL} columns require both \texttt{size} and \texttt{d}
+parameters in the DBRepo UI --- specifying only one triggers a \texttt{BAD\_REQUEST}
+validation error. \texttt{BOOLEAN} columns must be uploaded as integer \texttt{1}/\texttt{0}
+not as Python \texttt{True}/\texttt{False} strings. Columns defined as
+\texttt{SMALLINT NULL} in the schema become \texttt{float64} in pandas when they
+contain NaN values --- which DBRepo then maps to \texttt{DECIMAL} type rather than
+integer, causing upload rejections for values such as \texttt{-1}. Each of these
+required a specific fix: \texttt{pd.Int64Dtype()} for nullable integers,
+\texttt{\{1.0: 1, 0.0: 0\}} mapping for boolean columns, \texttt{lineterminator=`\textbackslash n'}
+and plain \texttt{utf-8} encoding (not \texttt{utf-8-sig}) to avoid BOM characters that
+corrupted the DBRepo UI parser. The initial DMP described data loading in a single
+sentence; the final version reflects weeks of iterative debugging.
+
+\subsubsection*{Provenance documentation scope}
+
+T2.6 requires documenting the API base URL, all endpoints used, and the authentication
+method in the README. The initial DMP would have described this as a brief technical
+note. The final implementation required documenting: the exact database ID, seven view
+names and their purposes, the distinction between fact views (via
+\texttt{get\_view\_data()}) and lookup tables (via \texttt{get\_table\_data()} due to a
+server bug), the SDK version (\texttt{dbrepo==1.13.3}), the column rename mapping
+between DBRepo column names and the original Excel column names expected by the ML
+pipeline, the reconstruction of \texttt{start\_value} in EUR from the stored
+\texttt{value\_start\_mln} column, and a quantified equivalence check with explanation
+of the measured difference. An audit trail CSV (\texttt{transfer\_data\_from\_api.csv})
+was also produced to make the exact API input to the model reproducible. The initial DMP
+described none of this specificity because it predates any knowledge of what the actual
+implementation would require.
+
+\subsubsection*{Three separately justified licence categories}
+
+The initial DMP likely assigned a single licence to the project. The final DMP required
+treating three artefact categories independently. Input data is governed by the original
+publishers' CC~BY~4.0 licence (Mendeley Data) --- the group is a re-publisher, not a
+rights holder, and this distinction had to be reflected explicitly in DBRepo metadata
+and the \texttt{source\_dataset} table. Source code required a separate open-source
+licence (MIT) with a written justification of its compatibility with CC~BY~4.0 and a
+\texttt{LICENSE} file in the repository root. Generated outputs (models, predictions,
+metrics) required a third licence choice (CC~BY~4.0) stated in every TUWRD deposit
+record. The initial DMP would not have separated these categories or addressed the
+compatibility analysis between them.
+
+\subsubsection*{Data quality issues that only emerged during loading}
+
+The initial DMP described the source datasets as openly available and suitable for
+direct use. 17 rows with missing \texttt{start\_value\_eur} that could not be stored as
+NULL due to a column constraint applied during table creation; 6 missing
+\texttt{instagram\_followers\_mln} values filled with \texttt{0.0}; and columns such as
+\texttt{club\_performance}, \texttt{relegation}, and \texttt{success\_or\_not} that are
+genuinely NULL for four of the five seasons because they were only collected in 2019.
+Each required a documented decision --- the initial DMP treated data loading as a
+straightforward ingestion step.
