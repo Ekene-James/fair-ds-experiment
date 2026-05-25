@@ -1,0 +1,4 @@
+metric,value
+RMSE,1250000
+MAE,890000
+R2,0.84
