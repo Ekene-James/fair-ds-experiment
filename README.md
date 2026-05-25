@@ -102,7 +102,7 @@ config_<purpose>.yaml
 Clone the repository:
 
 ```bash
-git clone https://github.com/bilalhussain3223/fair-ds-experiment.git
+git clone https://github.com/Ekene-James/fair-ds-experiment
 cd fair-ds-experiment
 ```
 
@@ -312,7 +312,7 @@ The minor difference is attributable to two storage effects: (1) `DECIMAL(12,3)`
 | Primary view          | `vw_transfer_features`                                                         |
 | Source dataset DOI    | https://doi.org/10.17632/3btg6ptc7b.2                                          |
 | Source dataset DOI    | https://doi.org/10.17632/cgc33scxg7.1                                          |
-| Model deposit (TUWRD) | https://doi.org/10.70124/c35xx-9pb93                                           |
+| Model deposit (TUWRD) | https://doi.org/10.70124/g7pw4-cd077                                           |
 | Code DOI (Zenodo)     | https://doi.org/10.5281/zenodo.20357906                                        |
 | SDK version           | dbrepo==1.13.3                                                                 |
 | Raw API data saved to | `notebooks/outputs/transfer_data_from_api.csv`                                 |

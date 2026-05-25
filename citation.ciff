@@ -9,10 +9,10 @@ type: software
 authors:
   - family-names: Edeh
     given-names: Ekene
-  - family-names: Muhammad
-    given-names: Athar Riaz 
-  - family-names: Muhammad
-    given-names: Bilal Hussain
+  - family-names: Muhammad Athar
+    given-names: Riaz 
+  - family-names: Hussain
+    given-names: Muhammad Bilal
 
 
 repository-code: "https://github.com/Ekene-James/fair-ds-experiment"

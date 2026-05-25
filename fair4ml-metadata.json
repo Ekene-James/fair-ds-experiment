@@ -1,78 +1,218 @@
 {
+  "@context": "https://w3id.org/fair4ml/context",
+  "@type": "MLModel",
+
   "metadata_standard": "FAIR4ML",
+  "metadata_version": "1.0",
 
   "project_title": "Predicting the Market Value of Football Players Using Various Factors",
 
   "model_name": "XGBoostRegressor",
-
   "model_version": "1.0",
+  "model_doi": "https://doi.org/10.70124/g7pw4-cd077",
+  "model_card": "docs/model-card.md",
 
-  "algorithm_library": "xgboost",
-
-  "algorithm_version": "2.0",
-
-  "training_dataset": {
-    "name": "Football Player Market Value Dataset",
-
-    "source_dataset_1": {
-      "name": "Forward football player valuation",
-      "doi": "10.17632/cgc33scxg7.1",
-      "license": "CC BY 4.0"
-    },
-
-    "source_dataset_2": {
-      "name": "Transfer Value Determinants",
-      "doi": "10.17632/3btg6ptc7b.2",
-      "license": "CC BY 4.0"
-    }
+  "algorithm": {
+    "name": "XGBoost Gradient Boosting Regressor",
+    "library": "xgboost",
+    "library_version": "3.2.0",
+    "objective": "reg:squarederror",
+    "pipeline_wrapper": "sklearn.pipeline.Pipeline",
+    "pipeline_library": "scikit-learn",
+    "pipeline_library_version": "1.8.0"
   },
 
   "hyperparameters": {
-    "n_estimators": 100,
-    "max_depth": 10,
+    "n_estimators": 20,
+    "max_depth": 3,
     "learning_rate": 0.1,
-    "random_state": 42
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "random_state": 42,
+    "n_jobs": 1,
+    "tree_method": "hist",
+    "objective": "reg:squarederror"
+  },
+
+  "preprocessing": {
+    "numeric_strategy": "median imputation (sklearn.impute.SimpleImputer)",
+    "categorical_strategy": "most_frequent imputation + one-hot encoding (sklearn.preprocessing.OneHotEncoder)",
+    "unknown_categories": "handle_unknown=ignore"
+  },
+
+  "training_dataset": {
+    "primary_source": {
+      "name": "Transfer Value Determinants",
+      "doi": "https://doi.org/10.17632/3btg6ptc7b.2",
+      "license": "CC BY 4.0",
+      "publisher": "Mendeley Data",
+      "version": "V2",
+      "author": "Ronald Nisanov",
+      "rows": 2502,
+      "seasons": "2019-2023",
+      "dbrepo_database": "https://test.dbrepo.tuwien.ac.at/database/598ce585-d8b5-4a97-8f19-cb085d4a5b1e",
+      "dbrepo_view": "vw_transfer_features"
+    },
+    "secondary_source": {
+      "name": "Forward Football Player Valuation",
+      "doi": "https://doi.org/10.17632/cgc33scxg7.1",
+      "license": "CC BY 4.0",
+      "publisher": "Mendeley Data",
+      "version": "V1",
+      "authors": "Hugo Briseño; José Carlos Rivera",
+      "rows": 438,
+      "note": "Loaded as a documented input but not used for training the regression model"
+    }
+  },
+
+  "target_variable": {
+    "name": "value_end_mln",
+    "description": "End-of-season transfer market value of the player in millions EUR",
+    "unit": "million EUR"
+  },
+
+  "features_used": [
+    {
+      "name": "position",
+      "type": "categorical",
+      "description": "Player field position (e.g. Striker, Defensive Midfield)"
+    },
+    {
+      "name": "nationality",
+      "type": "categorical",
+      "description": "Player nationality"
+    },
+    {
+      "name": "club_name",
+      "type": "categorical",
+      "description": "Name of the player's club"
+    },
+    {
+      "name": "age_then",
+      "type": "numeric",
+      "description": "Player age at the start of the season",
+      "unit": "years"
+    },
+    {
+      "name": "age_now",
+      "type": "numeric",
+      "description": "Player current age at time of data collection",
+      "unit": "years"
+    },
+    {
+      "name": "total_games",
+      "type": "numeric",
+      "description": "Total games played in the season",
+      "unit": "count"
+    },
+    {
+      "name": "assists",
+      "type": "numeric",
+      "description": "Total assists in the season",
+      "unit": "count"
+    },
+    {
+      "name": "penalty_kicks",
+      "type": "numeric",
+      "description": "Total penalty kicks taken in the season",
+      "unit": "count"
+    },
+    {
+      "name": "total_minutes",
+      "type": "numeric",
+      "description": "Total minutes played in the season",
+      "unit": "minutes"
+    },
+    {
+      "name": "total_goals",
+      "type": "numeric",
+      "description": "Total goals scored in the season",
+      "unit": "count"
+    },
+    {
+      "name": "height",
+      "type": "numeric",
+      "description": "Player height",
+      "unit": "cm"
+    },
+    {
+      "name": "start_value",
+      "type": "numeric",
+      "description": "Transfer market value at the start of the season",
+      "unit": "EUR"
+    },
+    {
+      "name": "value_0_mln",
+      "type": "numeric",
+      "description": "Transfer market value at the start of the season",
+      "unit": "million EUR"
+    },
+    {
+      "name": "season",
+      "type": "numeric",
+      "description": "Season year",
+      "unit": "year"
+    }
+  ],
+
+  "train_test_split": {
+    "test_size": 0.3,
+    "train_size": 0.7,
+    "random_state": 42,
+    "method": "sklearn.model_selection.train_test_split"
   },
 
   "evaluation_metrics": {
-    "rmse": 0.18,
-    "mae": 0.12,
-    "r2_score": 0.87
+    "note": "Evaluated on 30% held-out test set",
+    "local_file_version": {
+      "r2": 0.8702,
+      "rmse": 8.0957,
+      "mae": 5.5635,
+      "unit": "million EUR",
+      "test_rows": 751,
+      "train_rows": 1751
+    },
+    "dbrepo_api_version": {
+      "r2": 0.8689,
+      "rmse": 8.6637,
+      "mae": 5.7851,
+      "unit": "million EUR",
+      "note": "Minor difference due to DECIMAL(12,3) rounding in DBRepo storage and 17 NULL rows stored as 0.0"
+    }
   },
 
-  "intended_use": "Prediction of football player market values using player attributes, club context, league information, and performance-related features.",
+  "intended_use": "Prediction of end-of-season football player transfer market value in millions EUR. Intended for use by sports analysts, researchers studying transfer market dynamics, and data science practitioners exploring regression modelling on sports data. The model is designed for research and educational purposes as part of a FAIR Data Science experiment.",
+
+  "out_of_scope_uses": "The model should not be used for actual financial decisions, contract negotiations, or commercial player valuation without further validation. It is not designed for leagues or seasons outside the 2019-2023 training range, and may not generalise to non-European football contexts.",
 
   "known_limitations": [
-    "Model performance depends on dataset quality and completeness.",
-    "Predictions may not generalize across all football leagues.",
-    "Transfer market fluctuations may affect prediction accuracy.",
-    "Some external economic and contractual factors are not included in the model."
+    "Trained only on data from seasons 2019-2023; may not reflect current market conditions.",
+    "Predictions may not generalise across all football leagues — training data is European-focused.",
+    "Transfer market fluctuations driven by external economic or geopolitical factors are not captured.",
+    "Contractual factors such as remaining contract length are not included as features.",
+    "17 rows with unknown start transfer value were stored as 0.0 in DBRepo due to a NOT NULL column constraint, which slightly affects the API version results.",
+    "The model uses a small number of estimators (n_estimators=20) and shallow trees (max_depth=3), limiting complexity."
   ],
 
-  "features_used": [
-    "player_age",
-    "player_position",
-    "club_name",
-    "nationality",
-    "matches_played",
-    "goals",
-    "assists",
-    "minutes_played",
-    "instagram_followers_mln",
-    "season_year"
-  ],
+  "ethical_considerations": "The training data contains player nationalities and club affiliations which are categorical features. The model does not make decisions about individuals and is not used in any automated decision-making context. No personally identifiable information beyond publicly available player statistics is used.",
 
   "generated_outputs": [
-    "trained_model.pkl",
-    "predictions.csv",
-    "feature_importance.png",
-    "model_performance.png",
-    "regression_metrics.txt"
+    "notebooks/models/final_model.pkl",
+    "notebooks/models/final_model_api.pkl",
+    "notebooks/outputs/predictions.csv",
+    "notebooks/outputs/predictions_api.csv",
+    "notebooks/outputs/evaluation_metrics.csv",
+    "notebooks/outputs/evaluation_metrics_api.csv",
+    "notebooks/outputs/transfer_data_from_api.csv"
   ],
 
-  "model_doi": "https://doi.org/10.70124/c35xx-9pb93",
-
   "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
 
-  "repository": "https://github.com/Ekene-James/fair-ds-experiment"
+  "repository": "https://github.com/Ekene-James/fair-ds-experiment",
+  "code_doi": "https://doi.org/10.5281/zenodo.20357906",
+  "generated_data_doi": "https://doi.org/10.5281/zenodo.20377147",
+
+  "experiment_notebook_local": "notebooks/Project.ipynb",
+  "experiment_notebook_api": "notebooks/Project_api.ipynb"
 }
