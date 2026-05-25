@@ -19,15 +19,15 @@ Legend: ✅ done · 🟡 WIP / waiting · ❌ open
 
 | Status | Task | Short note |
 |---|---|---|
-| ❌ | T2.2 Semantic mapping | Map attributes to ontology concepts in DBRepo |
-| ❌ | T2.7 WP2 release | Make second GitHub release |
-| ❌ | T3.2 CodeMeta | Add `codemeta.json` |
-| ❌ | T3.6 Licences | Define input/code/output licences |
-| ❌ | T3.10 Generated-data deposit | Upload predictions/results as separate TUWRD dataset; needs A model DOI |
-| ❌ | T4.3 maDMP JSON | Export/finalize maDMP JSON |
-| ❌ | T4.5 DMP comparison | Compare initial vs final DMP |
-| ❌ | T5.3 OSTrails tests B | Implement B's 3 tests |
-| ❌ | WP6/WP7 | Review + final report parts |
+| ✅ | T2.2 Semantic mapping | Map attributes to ontology concepts in DBRepo |
+| ✅ | T2.7 WP2 release | Make second GitHub release |
+| ✅ | T3.2 CodeMeta | Add `codemeta.json` |
+| ✅ | T3.6 Licences | Define input/code/output licences |
+| ✅ | T3.10 Generated-data deposit | Upload predictions/results as separate TUWRD dataset; needs A model DOI |
+| ✅ | T4.3 maDMP JSON | Export/finalize maDMP JSON |
+| ✅ | T4.5 DMP comparison | Compare initial vs final DMP |
+| ✅ | T5.3 OSTrails tests B | Implement B's 3 tests |
+| ✅ | WP6/WP7 | Review + final report parts |
 
 ## C – Muhammad Bilal Hussain
 
@@ -41,7 +41,7 @@ Legend: ✅ done · 🟡 WIP / waiting · ❌ open
 | ✅ | T3.11 Standards overlap | Table for RO-Crate/CodeMeta/FAIR4ML/Croissant/Model Card |
 | ✅ | T4.1 Final DMP in DMP Tool | Complete DAMAP/FWF template |
 | ✅ | T5.4 OSTrails tests C | Implement C's 3 tests |
-| ❌ | WP6/WP7 | Review + final report parts |
+| ✅ | WP6/WP7 | Review + final report parts |
 
 ## D – Ekene Edeh
 
